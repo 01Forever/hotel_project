@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 
+<jsp:include page="./comm/head.jsp"/>
+ -->
+<meta charset="UTF-8">
+<title>회원 가입</title>
+<link rel="stylesheet" type="text/css" href="./css/button.css">
+<!-- 
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+-->
+</head>
+<body>
+<div class="container">
+	<div class="section">
+		<div class="pw_modify">
+			<form action="" id="pw_modify">
+				<fieldset>
+					<legend>비밀번호 찾기 폼</legend>
+					<div class="login-cont">
+						<p>※ 가입시 입력한 이메일주소로 임시비밀번호를 보내드립니다.</p>
+						<div class="inp-txt-member">
+							<input type="text" name="emailid" placeholder="이메일 주소" title="이메일 주소">
+						</div>
+						<button type="button" name="button" class="btn-login" id="findPw">확인</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<jsp:include page="./comm/footer.jsp"/>
+</div>
+</body>
+</html>

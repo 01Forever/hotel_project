@@ -1,0 +1,332 @@
+package xyz.for01.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import xyz.for01.conn.Conn;
+import xyz.for01.hotelvo.RoomVo;
+import xyz.for01.reservation.ReservationVo;
+
+public class ReservationDao {
+	private ReservationDao() {}
+	
+	private static ReservationDao instance = new ReservationDao();
+	
+	public static ReservationDao getInstance() {
+		return instance;
+	}
+	
+	// 예약 진행 중인 방의 정보 출력하는 메소드
+	public RoomVo showRoomInfo(int roomNo) {
+		String sql = "SELECT R.HOTELNO, H.HOTELNAME, R.ROOMNO, R.ROOMNAME, R.PRICE FROM HOTEL H JOIN ROOM R ON H.HOTELNO = R.HOTELNO WHERE R.ROOMNO = ?";
+		
+		RoomVo rVo = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, roomNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				rVo = new RoomVo(rs.getInt("hotelNo"), rs.getString("hotelName"), rs.getInt("roomNo"), rs.getString("roomName"), rs.getString("price"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			Conn.close(conn, pstmt, rs);
+		}
+		
+		return rVo;
+	}
+	
+	// 예약을 데이터베이스에 저장하는 메소드
+	public int insertRes(ReservationVo rVo, String mileage, String price_ori) {
+		Connection conn = null;
+		int result = -1;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = Conn.getConnection();
+			conn.setAutoCommit(false);
+			
+			String sql = "INSERT INTO RESERVATION(RES_IDX, NAME, PHONE, GRADE, RES_START, RES_END, HOTELNO, ROOMNO, PRICE, RESDATE, RESSTAT, USERNO) "
+					+ "VALUES(RES_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, ?,?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, rVo.getName());
+			pstmt.setString(2, rVo.getPhone());
+			pstmt.setInt(3, rVo.getGrade());
+			pstmt.setDate(4, rVo.getRes_start());
+			pstmt.setDate(5, rVo.getRes_end());
+			pstmt.setInt(6, rVo.getHotelNo());
+			pstmt.setInt(7, rVo.getRoomNo());
+			pstmt.setString(8, rVo.getPrice());
+			pstmt.setInt(9, rVo.getResStat());
+			if(rVo.getUserNo() == null) {
+				pstmt.setLong(10, 0);
+			}else {
+				pstmt.setLong(10, rVo.getUserNo());
+			}
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+			if(!mileage.equals("0")) {
+				String Milsql = "INSERT INTO MILEAGE VALUES(?, ?, SYSDATE, ?)";
+				
+				pstmt = conn.prepareStatement(Milsql);
+				
+				pstmt.setLong(1, rVo.getUserNo());
+				pstmt.setLong(2, -Long.parseLong(mileage));
+				pstmt.setString(3, "호텔 예약시 마일리지 사용");
+				
+				pstmt.executeUpdate();
+				pstmt.close();
+				
+			}
+			
+			conn.commit();
+			result = 1;
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			if(conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {}
+			}
+		} finally {
+			try {
+				conn.setAutoCommit(true);
+				Conn.close(conn, pstmt);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	// 예약 정보를 출력하는 메소드
+	public ReservationVo checkReservation() {
+		String sql = "SELECT M.ROOMNAME, T.PRICE, T.HOTELNAME, T.RES_IDX, T.NAME, T.PHONE, T.RES_START, T.RES_END, T.RESDATE, T.RESSTAT " + 
+				"FROM ROOM M " 
+				+ "JOIN (SELECT H.HOTELNAME, R.RES_IDX, R.NAME, R.PHONE, R.RES_START, R.ROOMNO, R.RES_END, R.PRICE, R.RESDATE, R.RESSTAT "
+				+ "FROM HOTEL H " 
+				+ "JOIN (SELECT RES_IDX, NAME, PHONE, RES_START, RES_END, HOTELNO, ROOMNO, PRICE, RESDATE, RESSTAT "
+				+ "FROM RESERVATION "
+				+ "WHERE RES_IDX = (SELECT MAX(RES_IDX) FROM RESERVATION)) R " 
+				+ "ON H.HOTELNO = R.HOTELNO) T "
+				+ "ON M.ROOMNO = T.ROOMNO";
+		
+		ReservationVo rVo = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				rVo = new ReservationVo(rs.getInt("res_idx"), rs.getString("name"), rs.getString("phone"), 
+						rs.getDate("res_start"), rs.getDate("res_end"), rs.getString("hotelname"), 
+						rs.getString("roomName"), rs.getString("price"), rs.getDate("resdate"), rs.getInt("resstat"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			Conn.close(conn, pstmt, rs);
+		}
+		
+		return rVo;
+	}
+	
+	// 비회원 예약 조회 메소드
+	public List<ReservationVo> unuserResCheck(String userName, String phone) {
+		String sql = "SELECT M.ROOMNAME, M.PRICE, T.HOTELNAME, T.RES_IDX, T.NAME, T.PHONE, T.RES_START, T.RES_END, T.RESDATE, T.RESSTAT FROM ROOM M "
+				+ "JOIN (SELECT H.HOTELNAME, R.RES_IDX, R.NAME, R.PHONE, R.RES_START, R.ROOMNO, R.RES_END, R.PRICE, R.RESDATE, R.RESSTAT "
+				+ "FROM HOTEL H "
+				+ "JOIN (SELECT RES_IDX, NAME, PHONE, RES_START, RES_END, HOTELNO, ROOMNO, PRICE, RESDATE, RESSTAT "
+				+ "FROM RESERVATION "
+				+ "WHERE GRADE = 0 AND NAME = ? AND PHONE = ?) R  "
+				+ "ON H.HOTELNO = R.HOTELNO) T "
+				+ "ON M.ROOMNO = T.ROOMNO";
+		
+		List<ReservationVo> rVo = new ArrayList<ReservationVo>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, phone);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				rVo.add(new ReservationVo(rs.getInt("res_idx"), rs.getString("name"), rs.getString("phone"), 
+						rs.getDate("res_start"), rs.getDate("res_end"), rs.getString("hotelname"), 
+						rs.getString("roomName"), rs.getString("price"), rs.getDate("resdate"), rs.getInt("resstat")));
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			Conn.close(conn, pstmt, rs);
+		}
+		
+		return rVo;
+	}
+	// 회원 예약 리스트 조회 메소드
+		public List<ReservationVo> userResListCheckAll(int userNo){
+			String sql = "SELECT RES_IDX, HOTELNAME, ROOMNAME, NAME, PHONE, RES_START, RES_END, PRICE, CHECKIN, CHECKOUT, RESDATE, RESSTAT " 
+						+ "FROM HOTEL H JOIN (SELECT RES_IDX, NAME, PHONE, RES_START, RES_END, ROOMNAME, U.HOTELNO, U.PRICE, CHECKIN, CHECKOUT, RESDATE, RESSTAT " 
+					+ "FROM ROOM R JOIN (SELECT RES_IDX, NAME, PHONE, RES_START, RES_END, HOTELNO, ROOMNO, PRICE, CHECKIN, CHECKOUT, RESDATE, RESSTAT " 
+					+ "FROM RESERVATION " 
+					+ "WHERE USERNO = ?) U " 
+					+ "ON R.ROOMNO = U.ROOMNO) T ON T.HOTELNO = H.HOTELNO "
+					+ "ORDER BY RES_IDX DESC";
+			List<ReservationVo> rVo = new ArrayList<ReservationVo>();
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = Conn.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, userNo);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					rVo.add(new ReservationVo(rs.getInt("res_idx"), rs.getString("name"), rs.getString("phone"), 
+							rs.getDate("res_start"), rs.getDate("res_end"), rs.getString("hotelname"), 
+							rs.getString("roomName"), rs.getString("price"), rs.getDate("resdate"), rs.getInt("resstat")));
+				}
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}finally {
+				Conn.close(conn, pstmt, rs);
+			}
+			
+			return rVo;
+		}
+		
+	// 회원 예약 리스트 조회 메소드
+	public List<ReservationVo> userResListCheck(int userNo, int resStat){
+		String sql = "SELECT RES_IDX, HOTELNAME, ROOMNAME, NAME, PHONE, RES_START, RES_END, PRICE, CHECKIN, CHECKOUT, RESDATE, RESSTAT " 
+					+ "FROM HOTEL H JOIN (SELECT RES_IDX, NAME, PHONE, RES_START, RES_END, ROOMNAME, U.HOTELNO, U.PRICE, CHECKIN, CHECKOUT, RESDATE, RESSTAT " 
+				+ "FROM ROOM R JOIN (SELECT RES_IDX, NAME, PHONE, RES_START, RES_END, HOTELNO, ROOMNO, PRICE, CHECKIN, CHECKOUT, RESDATE, RESSTAT " 
+				+ "FROM RESERVATION " 
+				+ "WHERE USERNO = ?) U " 
+				+ "ON R.ROOMNO = U.ROOMNO) T ON T.HOTELNO = H.HOTELNO WHERE RESSTAT = ? "
+				+ "ORDER BY RES_IDX DESC";
+		List<ReservationVo> rVo = new ArrayList<ReservationVo>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, resStat);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				rVo.add(new ReservationVo(rs.getInt("res_idx"), rs.getString("name"), rs.getString("phone"), 
+						rs.getDate("res_start"), rs.getDate("res_end"), rs.getString("hotelname"), 
+						rs.getString("roomName"), rs.getString("price"), rs.getDate("resdate"), rs.getInt("resstat")));
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Conn.close(conn, pstmt, rs);
+		}
+		
+		return rVo;
+	}
+	
+	// 예약 번호에 해당하는 예약 정보 가져오기
+	public ReservationVo getResOnly(int res_idx) {
+		String sql = "SELECT RES_IDX, NAME, PHONE, RES_START, RES_END, HOTELNAME, ROOMNAME, PRICE, CHECKIN, CHECKOUT, RESDATE, RESSTAT, PRICE_ORI " 
+				+ "FROM HOTEL H JOIN (SELECT RES_IDX, NAME, PHONE, RES_START, RES_END, V.HOTELNO, ROOMNAME, CHECKIN, CHECKOUT, RESDATE, RESSTAT, V.PRICE, R.PRICE PRICE_ORI " 
+				+ "FROM ROOM R JOIN ( " 
+				+ "SELECT * " 
+				+ "FROM RESERVATION " 
+				+ "WHERE RES_IDX = ?) V " 
+				+ "ON V.ROOMNO = R.ROOMNO) R " 
+				+ "ON R.HOTELNO = H.HOTELNO";
+		
+		ReservationVo rVo = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, res_idx);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				rVo = new ReservationVo(rs.getInt("res_idx"), rs.getString("name"), rs.getString("phone"), 
+						rs.getDate("res_start"), rs.getDate("res_end"), rs.getString("hotelname"), 
+						rs.getString("roomName"), rs.getString("price"),rs.getDate("checkin"),rs.getDate("checkout"), rs.getDate("resdate"), rs.getInt("resstat"),
+						rs.getString("price_ori"));
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Conn.close(conn, pstmt, rs);
+		}
+		
+		return rVo;
+	}
+	
+	// 예약 번호에 해당하는 예약 정보를 삭제하는 메소드
+	public void deleteRes(int res_idx) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = Conn.getConnection();
+			
+			String sql = "UPDATE RESERVATION SET RESSTAT = 3 WHERE RES_IDX = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, res_idx);
+			
+			pstmt.executeQuery();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Conn.close(conn, pstmt);
+		}
+		
+	}
+}

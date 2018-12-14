@@ -1,0 +1,89 @@
+@charset "UTF-8";
+	
+	#search {padding: 5% 0; margin-bottom: 50px; background: url("../images/header.jpg"); background-repeat: no-repeat; background-size: 100% 100%;}
+	#maintext {display: inline; margin: 0 auto; text-align: center;  font-size: 40px; color: white; transform: translate(-54%, -190%);  z-index: 2; }
+	#maintext p { /* padding-top: 123px; */ padding: 100px 0; }
+	#search_bar {position: relative;width: 66%;height: 150px;border: 5px solid #ff5146;margin: 0 auto;top: 23%;border-radius: 10px;background-color: #fff; }
+	.search_item {float: left;width: 20%;height: 150px;text-align: center;display: table;}
+	.search_item_button {float: right;width: 20%;height: 150px;text-align: center;display: table;}
+	.search_itemIn {display: table-cell;vertical-align: middle;}
+	.search_category a{padding-top: 30px;}
+	.box_category {margin-left: 20px; margin-top: 10px; font-size: 24px;}	
+	#search_button{float: right;width: 100%;height: 150px;padding: 0;margin: 0;top: 0;right: 0;font-size: 25px;text-align: center; text-decoration: none; cursor: pointer; color: white; border: none; background: #ff5146; background: -webkit-gradient(linear,left top,right bottom, color-stop(0,#ff5146), color-stop(100%,#ff5146)); }
+	#borugh {cursor: pointer;}
+	#res_Start{cursor: pointer;}
+	#res_End{cursor: pointer;}
+	/* 헤더 카테고리의 마우스 hover 이벤트 */
+	#other a:hover { color: #01c9ca;   }
+	#other a:before { position: absolute; display: block; width: 100%; height: 1px; content: ''; bottom: 0; left: 0; background: #000;transform: scale(0);transition: all 0.2s;}
+	#other a:hover:before {background: #01c9ca; transform: scale(1);}
+	.search_input{position:relative; width:80%; height:40px;margin: 25px auto;line-height:40px; border:1px solid #ff5146; border-radius:4px; text-transform:uppercase; background:#fff;}
+	.search_input label{position:absolute; width:100%; top:0; left:0; }
+	.search_input label:after{content:'▼'; width:40px; height:40px; position:absolute; top:0; right:0; font-size:.76em; color:#fff; text-align:center; background:#ff5146;}
+	.search_input select{width:100%; height:40px; opacity:0; filter:alpha(opacity=0); -ms-filter:alpha(opacity=0);}
+	h2.mainTitle {font-size: 23px;font-weight: 700;line-height: 1.6em;}
+	input[type = 'text'] {text-align: center;background: transparent;border: none; width: 100px; height: 30px; font-size: 15px; -webkit-appearance: none;  -moz-appearance: none; appearance: none;}
+	#content {position: relative; }
+	.image-box{background-image:url('../images/hotel3.jpg');background-size:cover;width: calc(23% - 26px);min-width: 260px;min-height: 150px;margin-left: 40px;margin-top: 20px;position: relative;overflow: hidden;float: left;border-radius: 15px;}
+	.info-box {width: 50%;height: 150px;padding: 22px;margin-left: 20px;float: left;line-height: 28px;}
+	.hotelIndex {display: inline-block;}
+	.hotelIndex a {text-decoration: none;}
+	.hotel-title{font-size:25px;color: black;display: block;position: relative;}
+	.distance {margin-top: -25px;display: inline-block;width: 100px;text-align: right;box-shadow: 2px 2px 12px 1px #dad9d9;padding-right: 10px;font-weight: 700;font-size: 21px;line-height: 1.6em;float: right;}
+	#km { font-size: 15px; padding-left: 5px;}
+	.star {color: #ff5146;font-size: 20px;}
+	#close {/* padding: 60px 80px; */margin-top: 60px;}
+	#sliderBox {width: 100%;}
+	#closeSlider {width: 50%;}
+	#closeSlider > ul li {display: inline;}
+	#hotelImg {width: 30%;padding-left: 60px;float: left;}
+	#distance > li {padding: 10px 80px 0 0;float: right;}
+	#hotelInfo {padding-left: 420px;}
+	#hotelInfo > li {padding: 15px 0;}
+	#hotelInfo > li img {padding-right: 20px;float: left;}
+	#position {text-align: center;top: 7px;max-width: 1200px;width: 100%;}
+	#location {color: #ff5146;width: 20px;height: 20px;}
+	#recommend {padding: 50px 0px;background-color: #eee;}
+	#recommend div div:last-child {padding-right : 0px;}
+	#recommend .plan {text-align: center;position: relative;width: calc(33% - 26px);float: left;padding-right: 40px;cursor: pointer;}
+	#recommend .plan img {width: 90%;-webkit-filter: grayscale(0) blur(0);filter: grayscale(0) blur(0);-webkit-transition: .3s ease-in-out;transition: .3s ease-in-out;opacity: 0.8;}
+	#recommend .plan:hover img {-webkit-filter: grayscale(100%) blur(3px);filter: grayscale(100%) blur(3px);}
+	#recommend .plan span {color: white;position: absolute;top: 20px;display: none;font-size: 18px;margin-left: 30px;}
+	#recommend .plan:hover span {display: block;}
+	#event {padding-top: 50px;}
+	/* #content section {width: 63%; margin-top: 60px; margin: 0 auto;} */
+	#event #sliderBox .bx-wrapper {border : 0px; box-shadow: none; background: none}
+	#event #sliderBox .bx-wrapper img {width: 100%;} 
+	#event #sliderBox .bx-wrapper .bx-pager {bottom: 10px;}
+	.bx-wrapper {box-shadow: 0 0 3px #292929;border-radius: 15px;}
+	.clear-b:after {content: ''; display: block; width: 0px; height: 0px; clear: both;}
+	.main-title {margin-bottom: 30px;}
+	.main-title img {height: 26px;width: 26px;float: left; margin-top: 7px; margin-right: 7px;}
+	
+	
+@media screen and (max-width: 1024px) and (min-width: 601px) {
+	#search_bar { width: calc(100% - 25px); }
+	#search_bar > form > div:last-child {float: right;}
+	#position {width: calc(100% - 25px);}
+	.distance {float: right;display: inline-block;width: 100px;text-align: right;box-shadow: 2px 2px 12px 1px #dad9d9;padding-right: 10px;font-weight: 700;font-size: 21px;line-height: 1.6em;}
+	.image-box{background-image:url('../images/hotel3.jpg');background-size:cover;width: calc(23% - 26px);min-width: 260px;min-height: 150px;margin: 10px auto;position: relative;overflow: hidden;border-radius: 15px;float: none;}
+	.info-box {width: 90%;height: 150px;padding: 22px;margin: 0 auto;line-height: 28px;float: none;}
+}
+
+/* 추천여행지 이벤트 가로길이 600이하일 때 */
+@media screen and (max-width: 600px) {
+	#search {background: url("../images/header.jpg");background-repeat: no-repeat;background-size: 100% 100%;}
+	#search_bar {background-color: #fff;border: 5px solid #ff5146;border-radius: 10px;top: 10%;width: 80%;height: 350px;margin: 0 auto;position: relative;}
+	.search_item {float: left;width: 50%;height: 110px;padding-top: 20px;text-align: center;}
+	.search_item_button {float: right;width: 100%;height: 90px;text-align: center;}
+	#search_button{color: white;border: none;top: 0;right: 0;width: 100%;height: 90px;padding: 0;margin: 0;font-size: 25px;text-align: center;text-decoration: none;float: right;cursor: pointer;background: #ff5146;background: -webkit-gradient(linear,left top,right bottom,			color-stop(0,#ff5146),			color-stop(100%,#ff5146));cursor: pointer;}
+	/* .bx-wrapper .bx-controls-direction a {display: none;} */.image-box {	background-image:url('../images/hotel3.jpg');	background-size:cover;	width: 100%;	margin: 0 auto;	min-width: 260px;	min-height: 150px;	position: relative;	overflow: hidden;	border-radius: 15px;	float: none;	background-position-y: center;}.info-box {width: 85%;height: 150px;padding: 22px;margin: 0;float: left;line-height: 28px;}
+	.distance {float: right;display: inline-block;width: 90px;margin: 0;text-align: right;box-shadow: 2px 2px 12px 1px #dad9d9;padding-right: 10px;font-weight: 700;font-size: 21px;line-height: 1.6em;}
+	.main-title {margin-bottom: 10px;}
+	#recommend {padding: 20px 0px;background-color: #f5f2f2;}
+	#recommend .plan {text-align: center;position: relative;width: 100%;cursor: pointer;float: none;}
+	#recommend .plan img {/* height: 300px; */-webkit-filter: grayscale(0) blur(0);filter: grayscale(0) blur(0);-webkit-transition: .3s ease-in-out;transition: .3s ease-in-out;opacity: 0.8;width: 100%;padding: 15px 0;margin-left: auto;margin-right: auto;margin-top: auto;}
+
+	#maintext p {font-size: 35px;}/*메인 텍스트 */
+	#event {display: none;}
+}

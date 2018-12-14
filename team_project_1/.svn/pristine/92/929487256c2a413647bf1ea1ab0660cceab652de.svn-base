@@ -1,0 +1,433 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>내주변</title>
+ <style>
+    	div{
+    		/* border:1px solid #ccc; */
+    		display: block;
+    		margin: 0;
+  			padding: 0;
+    	}
+    	.calendar{
+    		padding:20px;
+    	}
+    	#container{
+    		padding:20px;
+    		margin:0 auto;
+    	}
+    	.title{
+    		height: 0px;
+   			margin-left: 31px;
+    		
+    	}
+    
+    	#content{
+    		width:1100px;
+    		height:1000px;
+    		padding:20px;
+    		float:left;
+  
+    	}
+    	.room{
+    		width:350px;
+    		height:220px;
+    		margin-bottom:50px;
+    	}
+    	.content-pic  .price span:first-child{
+    		margin-left:0;
+    	}
+    	.content-pic  .price span{
+    		margin-left:10px;
+    		color:#333;
+    	}
+    	.content-pic  .price span i{
+    		font-size: 16px; 
+    		font-style:normal;
+    	}
+    	.content-pic  .price span em{
+    		font-size: 21px; 
+    		margin-left: 10px;
+    		font-style:normal;
+    	}
+    	.price{
+    		position: relative;
+   			bottom: 2px;
+   			
+    	}
+    	.text-box{
+    		width:350px;
+    		height:190px; 
+    	}
+    	.text-title{
+    		transform: translateY(-50%);
+		    position: relative;
+		    top: 50%;
+		    width: 100%;
+    	}
+    	.hotel-title{
+    		font-size:25px;
+    		color:#fff;
+    	}
+    	.hotel-comment{
+    		font-size:16px;
+    		color:#fff;
+    	}
+    	
+    	#map{
+    		position:fixed;
+    		right:0;
+    		background:blue;
+    		width:700px;
+    		height:1000px;
+    		float:right;
+    	}
+
+    	ul{
+    		list-style:none;
+    		padding-left:0px;
+    	}
+    	ul li{
+    		display:inline-block;
+    		margin-left:10px;
+    	}
+    	.footer{
+    		width:100%;
+    		height:500px;
+    		z-index: 1;
+		    position: relative;
+		    background-color: #292929;
+		    font-size: 13px;
+		    color: #aaa;
+    		padding:20px;
+    		clear:both;
+    	}
+    	.footer-line{
+    		margin:0 auto;
+    		width:1100px;
+    	}
+    	.icon{
+    		
+    	}
+    	.foot-menu{
+    		
+    		clear:right;
+    		/* margin-right: 250px; */
+		    border-bottom: 1px solid #333;
+		    padding-bottom: 22px;
+		    text-align: right;
+    	}
+    	.foot-address{
+    		height:200px;
+    	}
+    	.address-list{
+    		float:left;
+    		width:75%;
+    		height:200px;
+    	}
+    	.Service-center{
+    		float:right;
+    		width:24%;
+    		height:200px
+    	}
+    </style>
+</head>
+<body>
+	<div class="calendar">
+		
+	</div>
+	
+	<div id="container">
+		<div class = "title">
+			<h4>Best 추천 숙소</h4>
+		</div>
+		<div id="content">
+			<ul class="content-pic">
+				<li>
+					<div class="room">
+						<a href="#">
+							<div style="background-image:url('images/hotel3.jpg'); background-size:cover; width:350px; height:190px; float:left; ">
+								<div class="text-box">
+									<div class="text-title">
+										<span class="hotel-title" style="display: block; position: relative; overflow: hidden; max-height: 54px;">
+											<span style="width=100%;">
+												영내의 방
+											</span>
+										</span>
+										<span class="hotel-comment">
+											가성비 최고의 특별한 무대, 화곡 영내!
+										</span>
+									</div>
+								</div>
+								<div class="price">
+									<span>
+										<i>대실</i><em>25,000</em><i>원</i>
+									</span>
+									<span>
+										<i>숙박</i><em>55,000</em><i>원</i>
+									</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="room">
+						<a href="#">
+							<div style="background-image:url('images/hotel3.jpg'); background-size:cover; width:350px; height:190px; float:left; ">
+								<div class="text-box">
+									<div class="text-title">
+										<span class="hotel-title" style="display: block; position: relative; overflow: hidden; max-height: 54px;">
+											<span style="width=100%;">
+												영내의 방
+											</span>
+										</span>
+										<span class="hotel-comment">
+											가성비 최고의 특별한 무대, 화곡 영내!
+										</span>
+									</div>
+								</div>
+								<div class="price">
+									<span>
+										<i>대실</i><em>25,000</em><i>원</i>
+									</span>
+									<span>
+										<i>숙박</i><em>55,000</em><i>원</i>
+									</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="room">
+						<a href="#">
+							<div style="background-image:url('images/hotel3.jpg'); background-size:cover; width:350px; height:190px; float:left; ">
+								<div class="text-box">
+									<div class="text-title">
+										<span class="hotel-title" style="display: block; position: relative; overflow: hidden; max-height: 54px;">
+											<span style="width=100%;">
+												영내의 방
+											</span>
+										</span>
+										<span class="hotel-comment">
+											가성비 최고의 특별한 무대, 화곡 영내!
+										</span>
+									</div>
+								</div>
+								<div class="price">
+									<span>
+										<i>대실</i><em>25,000</em><i>원</i>
+									</span>
+									<span>
+										<i>숙박</i><em>55,000</em><i>원</i>
+									</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="room">
+						<a href="#">
+							<div style="background-image:url('images/hotel3.jpg'); background-size:cover; width:350px; height:190px; float:left; ">
+								<div class="text-box">
+									<div class="text-title">
+										<span class="hotel-title" style="display: block; position: relative; overflow: hidden; max-height: 54px;">
+											<span style="width=100%;">
+												영내의 방
+											</span>
+										</span>
+										<span class="hotel-comment">
+											가성비 최고의 특별한 무대, 화곡 영내!
+										</span>
+									</div>
+								</div>
+								<div class="price">
+									<span>
+										<i>대실</i><em>25,000</em><i>원</i>
+									</span>
+									<span>
+										<i>숙박</i><em>55,000</em><i>원</i>
+									</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="room">
+						<a href="#">
+							<div style="background-image:url('images/hotel3.jpg'); background-size:cover; width:350px; height:190px; float:left; ">
+								<div class="text-box">
+									<div class="text-title">
+										<span class="hotel-title" style="display: block; position: relative; overflow: hidden; max-height: 54px;">
+											<span style="width=100%;">
+												영내의 방
+											</span>
+										</span>
+										<span class="hotel-comment">
+											가성비 최고의 특별한 무대, 화곡 영내!
+										</span>
+									</div>
+								</div>
+								<div class="price">
+									<span>
+										<i>대실</i><em>25,000</em><i>원</i>
+									</span>
+									<span>
+										<i>숙박</i><em>55,000</em><i>원</i>
+									</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="room">
+						<a href="#">
+							<div style="background-image:url('images/hotel3.jpg'); background-size:cover; width:350px; height:190px; float:left; ">
+								<div class="text-box">
+									<div class="text-title">
+										<span class="hotel-title" style="display: block; position: relative; overflow: hidden; max-height: 54px;">
+											<span style="width=100%;">
+												영내의 방
+											</span>
+										</span>
+										<span class="hotel-comment">
+											가성비 최고의 특별한 무대, 화곡 영내!
+										</span>
+									</div>
+								</div>
+								<div class="price">
+									<span>
+										<i>대실</i><em>25,000</em><i>원</i>
+									</span>
+									<span>
+										<i>숙박</i><em>55,000</em><i>원</i>
+									</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="room">
+						<a href="#">
+							<div style="background-image:url('images/hotel3.jpg'); background-size:cover; width:350px; height:190px; float:left; ">
+								<div class="text-box">
+									<div class="text-title">
+										<span class="hotel-title" style="display: block; position: relative; overflow: hidden; max-height: 54px;">
+											<span style="width=100%;">
+												영내의 방
+											</span>
+										</span>
+										<span class="hotel-comment">
+											가성비 최고의 특별한 무대, 화곡 영내!
+										</span>
+									</div>
+								</div>
+								<div class="price">
+									<span>
+										<i>대실</i><em>25,000</em><i>원</i>
+									</span>
+									<span>
+										<i>숙박</i><em>55,000</em><i>원</i>
+									</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="room">
+						<a href="#">
+							<div style="background-image:url('images/hotel3.jpg'); background-size:cover; width:350px; height:190px; float:left; ">
+								<div class="text-box">
+									<div class="text-title">
+										<span class="hotel-title" style="display: block; position: relative; overflow: hidden; max-height: 54px;">
+											<span style="width=100%;">
+												영내의 방
+											</span>
+										</span>
+										<span class="hotel-comment">
+											가성비 최고의 특별한 무대, 화곡 영내!
+										</span>
+									</div>
+								</div>
+								<div class="price">
+									<span>
+										<i>대실</i><em>25,000</em><i>원</i>
+									</span>
+									<span>
+										<i>숙박</i><em>55,000</em><i>원</i>
+									</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</li>
+				<li>
+					<div class="room">
+						<a href="#">
+							<div style="background-image:url('images/hotel3.jpg'); background-size:cover; width:350px; height:190px; float:left; ">
+								<div class="text-box">
+									<div class="text-title">
+										<span class="hotel-title" style="display: block; position: relative; overflow: hidden; max-height: 54px;">
+											<span style="width=100%;">
+												영내의 방
+											</span>
+										</span>
+										<span class="hotel-comment">
+											가성비 최고의 특별한 무대, 화곡 영내!
+										</span>
+									</div>
+								</div>
+								<div class="price">
+									<span>
+										<i>대실</i><em>25,000</em><i>원</i>
+									</span>
+									<span>
+										<i>숙박</i><em>55,000</em><i>원</i>
+									</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div id="map">
+			<p>지도 넣어야 함</p>
+		</div>
+	</div>
+		<div class="footer">
+			<div class="footer-line">
+				<div class="icon">
+					<h2>요기조기</h2>
+				</div>	
+				<ul class="foot-menu">
+					<li>회사 소개</li>
+					<li>회사 소개</li>
+					<li>회사 소개</li>
+					<li>이용 약관</li>
+					<li>개인정보처리방침</li>
+				</ul>
+				<div class="foot-address">
+					<div class="address-list">
+						<p>공개하지 아니한 회의내용의 공표에 관하여는 법률이 정하는 바에 의한다. 모든 국민은 직업선택의 자유를 가진다. 감사원은 세입·세출의 결산을 매년 검사하여 대통령과 차년도국회에 그 결과를 보고하여야 한다.
+						    헌법재판소의 장은 국회의 동의를 얻어 재판관중에서 대통령이 임명한다. 국무총리는 국회의 동의를 얻어 대통령이 임명한다. 대통령은 국무총리·국무위원·행정각부의 장 기타 법률이 정하는 공사의 직을 겸할 수 없다.
+						</p>
+					</div>
+					<div class="Service-center"> 
+						<p>고객센터</p>
+						<p>010-1234-4257</p>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

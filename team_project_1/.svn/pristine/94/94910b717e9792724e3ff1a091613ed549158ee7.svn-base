@@ -1,0 +1,43 @@
+package xyz.for01.controller.hotel;
+
+import java.io.IOException;
+import java.sql.Date;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import xyz.for01.dao.HotelDAO;
+import xyz.for01.hotelvo.HotelVo;
+
+@WebServlet("/hotelDetailPage")
+public class HotelDetailServlet extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String hotelNo = req.getParameter("hotelNo");
+		String checkinDate = req.getParameter("checkinDate");
+		String checkoutDate = req.getParameter("checkoutDate");
+		
+		System.out.println(checkinDate);
+		System.out.println(checkoutDate);
+		HotelDAO hDao = HotelDAO.getInstance();
+		HotelVo hVo = hDao.hotelDetail(Integer.parseInt(hotelNo));
+		
+		req.setAttribute("myHotel", hVo);
+		req.setAttribute("start", checkinDate);
+		req.setAttribute("end", checkoutDate);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("hotel/hotelDetail.jsp");
+		dispatcher.forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
+	
+}

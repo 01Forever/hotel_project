@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+body {}
+	.container {width: 100%; padding:100px 0 0 0; margin:0 auto;}
+	header {top: 0; width: 100%; position: fixed; z-index: 10000; background: #0c142b;}
+		div#header {width: 100%;margin: 0 auto;max-width: 1200px;text-align: right;}
+		div#header h1 {float:left;}
+		div#header h1 a img {width: 100px;}
+		button.m_menu_btn {display: none;}
+		div#header nav {width:calc(100% - 150px);padding: 20px 0;display: inline-block;}
+		div#header nav:after {content: ''; width: 0px; height: 0px;  clear: both;}
+		div#header nav ul#other {display: inline-block;}
+		div#header nav ul#other > li {display: inline-block; position: relative; cursor: pointer;}
+		div#header nav ul#other > li > a {display: block; text-decoration: none; color: #fff; font-size: 17px; font-weight: 500;}
+		div#header nav ul#other > li > a:hover{ color:beige;}
+		div#header nav ul#other > li:last-child a {padding-right: 0px;}
+			ul.sub_menu {display: none; position: absolute; width: 170px; border-radius: 20px; left: -30px; background: #ccc; }
+			ul.sub_menu li {}
+			ul.sub_menu li a {display: block; color: #000; font-size: 14px; text-align:center; font-weight: 500; text-decoration: none; }
+		
+	footer {width: 100%; }
+		div.footer {
+			bottom: 0;
+			z-index: 1;
+			position: relative;
+			background-color: #292929;
+			font-size: 13px;
+			color: #aaa;
+			padding:20px;
+			clear:both;
+		}
+		div.footer-line {margin:0 auto; width:1100px;}
+		div.icon {text-align: center; position:relative; display: inline-block;}
+		div.icon img{width: 50px;}
+		div.foot-address {height:200px; padding-top: 20px;}
+		div.address-list {float:left; width:75%; height:200px;}		
+		div.Service-center {float:right; width:20%; height:200px;}		
+			ul.foot-menu {border-bottom: 1px solid #333; padding-bottom: 10px; text-align: right;}
+			ul.foot-menu li {padding:0 20px; display: inline-block;}
+
+/* 화면 해상도 width 960px 이상 Design --------------------------------------*/
+@media screen and (min-width: 960px){
+		div#header nav ul#other > li > a { padding: 20px 25px;}
+		div#header nav ul#other > li:last-child a {}
+			div#header nav ul#other > li:hover {}  
+			ul.sub_menu {padding-top: 15px; padding-bottom: 15px;}
+			ul.sub_menu li {}
+			ul.sub_menu li a {padding: 10px 5px;}	
+}
+
+/* 화면 해상도 width 641px 이상 1024px 이하 Design --------------------------------------*/
+@media screen and (max-width: 1024px) and (min-width: 601px) {
+		div#header nav ul#other > li > a {padding: 25px 7px; font-size: 14px}
+		div#header nav ul#other > li:last-child a {padding-right: 10px}
+			div#header nav ul#other > li:hover {}  
+			ul.sub_menu {padding-top: 10px; padding-bottom: 10px;}
+			ul.sub_menu li {}
+			ul.sub_menu li a {padding: 10px 5px;}	
+}
+
+/* 화면 해상도 width 300px 이상  Design --------------------------------------*/
+@media screen and (max-width: 600px){
+	header {}
+		div#header {width: 100%;}
+		div#header h1 {float:left; width: 150px;}
+		button.m_menu_btn {display: block; float: right}
+		div#header nav {float: none; overflow: hidden; width:100%; text-align: left;}
+		div#header nav ul#other {display: none;}
+		div#header nav ul#other.on {display: block;}
+		div#header nav ul#other > li {display: block; position: relative; background: #ccc;}
+}
+

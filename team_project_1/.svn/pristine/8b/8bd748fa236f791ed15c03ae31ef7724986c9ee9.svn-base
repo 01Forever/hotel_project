@@ -1,0 +1,40 @@
+var g = this.grp_donut;
+	d3.setGraphic(g);
+	
+	for (var i = 0, len = ds.rowcount; i < len ; i++)
+	{
+	  dsObj = {
+	    "letter" : ds.getColumn(i, "letter"), 
+	    "frequency" : ds.getColumn(i, "frequency")
+	  };
+	  dataset.push(dsObj);
+	}
+	
+	var width = g.getOffsetWidth();
+	var height = g.getOffsetHeight();
+	var layer = d3.select("Layer");
+	var chart = layer.append("Group")
+	    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+	
+	var radius = Math.min(width, height) / 2;
+	var arc = d3.svg.arc()
+	  .outerRadius(radius - 10)
+	  .innerRadius(radius - 70);
+	
+	var pie = d3.layout.pie()
+	  .sort(null)
+	  .value(function(d) { return d.population; });
+	
+	arcg.append("Path")
+	  .attr("d", arc)    
+	  .style("fillbrush.color", function(d) { return color(d.data.age); });
+	
+	arcg.append("Text")
+	  .text(function(d) { return d.data.age; })
+	  .style("font", "sans-serif,-9")
+	  .style("fillbrush.color", "black")
+	  .attr("dy", 5)
+	  .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+	  .style("halign", "center");
+	
+	g.invalidate();

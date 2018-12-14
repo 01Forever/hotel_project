@@ -1,0 +1,108 @@
+@charset "UTF-8";
+		/* div{
+    		border:1px solid #ccc;
+    	} */
+    	.container{
+    		width: 60%;
+    		
+    		margin:0 auto;
+    	}
+    
+    	#content{
+    		padding:20px;
+    	}
+    	.tab-box{
+   		    margin: 0 auto;
+		    height: 350px;
+		    width: 60%;
+    	}
+    	.tab_content .tab1-list{
+    		border-bottom: 1px solid #ccc;
+    	}
+    	#tab1{
+    		line-height:2;
+    	}
+    	/* tab3 style */
+    	.reservation-box{
+    		height: 165px;
+   			width: 100%;
+    	}
+    	.reservation-image{
+    		width: 250px;
+		    height: 150px;
+		    float: left;
+		    display: inline-block;
+    	}
+    	.reservation-info{
+    	    width: 350px;
+		    height: 150px;
+		    float: right;
+		    margin-right: 40px;
+    	}
+    	#left-sidebar{
+    		width:150px;
+    		padding:20px;
+    		float:left;
+    		background:#eee;
+    		margin-bottom:20px;
+    	}
+    	.otherList {
+		
+			font-size: 18px;
+			width: 100%;
+			padding: 20px 0;
+			margin-right: 70px;
+			float: left;
+			line-height: 3;
+		}
+		
+		.otherList a {
+			text-decoration:none;
+		    display: block;
+		    font-size: 18px;
+		    color: rgba(0,0,0,0.56);
+		}
+		.otherList a:hover {
+			color:maroon;
+		}
+		.tabs{
+			cursor:pointer;
+		}
+		.tab_content button{
+			text-align:right;
+		}
+		.reserve-info{
+			padding: 0 0 0 130px;
+			display:inline-block;	
+		}
+		.reserve-value{
+			font-weight:600;
+			display:inline-block;
+		}
+    	#null{
+    		
+    		padding:20px;
+    		clear:both;
+    	}
+    	.button_box{
+    		padding: 20px;
+   			margin-left: 230px;
+    	}
+    	.button_tab1{
+    		display:inline-block;
+    	}
+    	.button_tab2{
+    		display:inline-block;
+    	}
+    	.button_tab1 button{
+    		cursor:pointer;
+    		padding:10px;
+    		border:none;
+    		background:antiquewhite; 
+    	}
+    	.button_tab2 button{
+    		cursor:pointer;
+    		padding:10px;
+    		border:none;
+    		background:antiquewhite;
+    	}

@@ -1,0 +1,492 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<jsp:include page="./comm/head.jsp"/>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>상세보기</title>
+<script src="js/calendar.js"></script>
+<style>
+	
+    	div{
+    		border:1px solid #ccc;
+    	}
+    	#container{
+    		width:1100px;
+    		padding:20px;
+    		margin:0 auto;
+    	}
+    	
+    	.menu{
+    		margin:auto;
+    		width:900px;
+    		height:200px;
+    	}
+    	.menu-left{
+    		position:relative;
+    		float:left;
+    		width:430px;
+    		height:200px;
+    	}
+    	.menu .menu-left .hotel-name h2{
+    		font-size:28px;
+    		font-weight:550; 
+    	}
+    	.tab-head{
+    		position:absolute;
+    		bottom:0;
+    		width:430px;
+    		height:50px;
+    	}
+    	.score{
+    		position:relative;
+    		bottom:0px;
+    		width:430px;
+    		height:50px;
+    	}
+    	.menu-right{
+    		float:right;
+    		width:430px;
+    		height:200px;
+    	}
+    	.calendar{
+    		width:100%;
+    		height:80px;
+    		background-color: #404040;
+    	}
+    	.calendar-head{
+    		border: 0 none;
+   			background: none;
+    	}
+    	.menu-right .calendar .calendar-head .start input{
+    		border:0;
+    		width:0;
+    		cursor: pointer;
+    	}
+    	
+    	
+    	.review-head{
+    		margin-top:10px;
+    	}
+    	.address-head{
+    		margin-top:10px;
+    	}
+    	.address{
+    		height:55px;
+    		font-size:18px;
+    		color: rgba(0,0,0,0.56);
+    	}
+    	#content{
+    		
+    		padding:20px;
+    	}
+    	.box{
+    		margin-bottom:25px;
+    		margin-left: 65px;
+    		/* border:1px solid #ccc; */
+    		width:914px;
+    		height:250px;
+    		
+    	}
+    	.pic{
+    		margin-top:14px;
+    		margin-left:14px;
+    		float:left;
+    		width:350px;
+    		height:220px;
+    	}
+    	.info{
+    		margin-top:14px;
+    		margin-right:14px;
+    		float:right;
+    		width:500px;
+    		height:220px;
+    	}
+    	.half-left{
+    		float:left;
+    		width:240px;
+    		height:220px;
+    	}
+    	.half-right{
+    		float:right;
+    		width:240px;
+    		height:220px;
+    	}
+    	.room-title{
+    		display: block;
+		    height: 37px;
+		    padding: 0;
+		    font-size: 20px;
+		    font-weight: bold;
+		    line-height: 1;
+		
+    	}
+    	.price{
+    		margin-top:30px;
+    	}
+    	.info .half-left .price p{
+    		margin-top:10px;
+    		text-align:right;
+    	}
+    	.info .half-left .price ul li{
+    		position: relative;
+		    margin-bottom: 7px;
+		    font-size: 16px;
+		    text-align: right;
+    	}
+    	.info .half-left .price ul li span{
+    		position: absolute;
+		    top: 0;
+		    left: 0;
+		    color: rgba(0,0,0,0.56);
+    	}
+    	.info .half-right .price p{
+    		margin-top:10px;
+    		text-align:right;
+    	}
+    	.info .half-right .price ul li{
+    		position: relative;
+		    margin-bottom: 7px;
+		    font-size: 16px;
+		    text-align: right;
+    	}
+    	.info .half-right .price ul li span{
+    		position: absolute;
+		    top: 0;
+		    left: 0;
+		    color: rgba(0,0,0,0.56);
+    	}
+    	.borrow{
+    		display: block;
+    		
+		    width: 100%;
+		    height: 44px;
+		    border: none;
+		    border-radius: 0 0 4px 4px;
+		    font-size: 14px;
+		    color: #fff;
+		    text-align: center;
+		    background: -webkit-gradient(linear,left top,right bottom,color-stop(0,#ff5146),color-stop(100%,#ff2d7b));
+    	}
+    	button{
+    		cursor: pointer;
+    	}
+    	
+    	#footer{
+    		
+    		padding:20px;
+    		clear:both;
+    	}
+    	#close {
+    	
+			
+		}
+		
+		#sliderBox {
+			width:100%;
+			height:100%;
+		}
+		
+		#closeSlider {
+			 
+		}
+		
+		#closeSlider > ul li {
+			width:100%;
+			display: inline;
+		}
+		
+		#hotelImg {
+			width: 100%;
+			
+		}
+		.close .sliderBox .closeSlider .hotelImg li{
+			width: 100%;
+		}
+		.menu-right .calendar .calendar-head .start input[text]{
+			 width:70%;
+		     height:100%;
+		     border:none;
+		     font-size:1em;
+		     padding-left: 5px;
+		     font-style: oblique;
+		     display:inline;
+		     outline:none;
+		     box-sizing: border-box;
+		     color:black;
+		}
+		
+
+	
+	
+	
+    </style>
+</head>
+<body>
+	<section id="close">
+			<div id="sliderBox">
+				<ul id="closeSlider">
+					<li>
+						<ul id="hotelImg">
+							<li >
+								<img alt="호텔1" src="images/hotel1.jpg" style="width:100%; height:500px;" />
+							</li>
+						</ul>
+					<li>
+						<ul id="hotelImg">
+							<li>
+								<img alt="호텔2" src="images/hotel2.jpg" style="width:100%; height:500px;"/>
+							</li>
+						</ul>			
+					</li>
+					<li>
+						<ul id="hotelImg">
+							<li>
+								<img alt="호텔3" src="images/hotel3.jpg" style="width:100%; height:500px;"/>
+							</li>
+						</ul>
+									
+					</li>
+					<li>
+						<ul id="hotelImg">
+							<li>
+								<img alt="호텔4" src="images/hotel4.jpg" style="width:100%; height:500px;"/>
+							</li>
+						</ul>				
+					</li>
+					
+				</ul>
+			</div>
+		</section>
+
+<div class="menu">
+	<div class="menu-left">
+		<div class="hotel-name">
+			<h2>호텔 이름</h2>
+		</div>
+		<div class="address-head">
+			<p class="address">서울시 강서구 화곡동 1111-11</p>
+		</div>
+		<div class="score">
+			<p>별점</p>
+		</div>
+		<div class="tab-head">
+			<button type="button"><span>객실안내/예약</span></button>
+			<button type="button"><span>숙소정보</span></button>
+			<button type="button"><span>리뷰</span></button>
+		</div>
+
+	</div>
+	<div class="menu-right">
+		<div class="calendar">
+			<div>
+				<span>체크인</span>
+				<span>체크아웃</span>
+			</div>
+			<div class="calendar-head">
+				<div class="start">
+					<label><input type="text" id="datepicker_cal"><span id="datepicker_text" style="cursor: pointer;"></span></label>
+				</div>	
+				<div class="last">
+					<input type="text" name="checkOut" id="checkOut" class="datepicker" size="12" placeholder="체크아웃" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+		
+<div id="container">
+	
+		<div id="content">
+			<div class="box">
+				<div class="pic">
+					<img src="images/hotel3.jpg" style="width:350px; hegiht:220px;">
+				</div>
+				<div class="info">
+					<div class="half-left">
+						<strong class="room-title">방 이름</strong>
+						<strong>대실</strong>
+						<div class="price">
+							<p>20000원</p>
+							<hr>
+							<ul>
+								<li>
+									<span>마감시간</span>
+									23시까지
+								</li>
+								<li>
+									<span>이용시간</span>
+									최대 5시간
+								</li>
+							</ul>
+						 </div>
+						<button type="button" class="borrow" >대실 예약</button>
+					</div>
+					<div  class="half-right">
+						<strong class="room-title">방 이름</strong>
+						<strong>숙박</strong>
+						<div class="price">
+							<p>50000원</p>
+							<hr>
+							<ul>
+								<li>
+									<span>입실시간</span>
+									17시부터
+								</li>
+								<li>
+									<span>퇴실시간</span>
+									익일 12시
+								</li>
+							</ul>
+						 </div>
+						<button type="button" class="borrow" >숙박 예약</button>
+					</div>
+				</div>
+			</div><!--box의 끝-->
+			<div class="box">
+				<div class="pic">
+					<img src="images/hotel3.jpg" style="width:350px; hegiht:220px;">
+				</div>
+				<div class="info">
+					<div class="half-left">
+						<strong class="room-title">방 이름</strong>
+						<strong>대실</strong>
+						<div class="price">
+							<p>20000원</p>
+							<hr>
+							<ul>
+								<li>
+									<span>마감시간</span>
+									23시까지
+								</li>
+								<li>
+									<span>이용시간</span>
+									최대 5시간
+								</li>
+							</ul>
+						 </div>
+						<button type="button" class="borrow" >대실 예약</button>
+					</div>
+					<div  class="half-right">
+						<strong class="room-title">방 이름</strong>
+						<strong>숙박</strong>
+						<div class="price">
+							<p>50000원</p>
+							<hr>
+							<ul>
+								<li>
+									<span>입실시간</span>
+									17시부터
+								</li>
+								<li>
+									<span>퇴실시간</span>
+									익일 12시
+								</li>
+							</ul>
+						 </div>
+						<button type="button" class="borrow" >숙박 예약</button>
+					</div>
+				</div>
+			</div><!--box의 끝-->
+			<div class="box">
+				<div class="pic">
+					<img src="images/hotel3.jpg" style="width:350px; hegiht:220px;">
+				</div>
+				<div class="info">
+					<div class="half-left">
+						<strong class="room-title">방 이름</strong>
+						<strong>대실</strong>
+						<div class="price">
+							<p>20000원</p>
+							<hr>
+							<ul>
+								<li>
+									<span>마감시간</span>
+									23시까지
+								</li>
+								<li>
+									<span>이용시간</span>
+									최대 5시간
+								</li>
+							</ul>
+						 </div>
+						<button type="button" class="borrow" >대실 예약</button>
+					</div>
+					<div  class="half-right">
+						<strong class="room-title">방 이름</strong>
+						<strong>숙박</strong>
+						<div class="price">
+							<p>50000원</p>
+							<hr>
+							<ul>
+								<li>
+									<span>입실시간</span>
+									17시부터
+								</li>
+								<li>
+									<span>퇴실시간</span>
+									익일 12시
+								</li>
+							</ul>
+						 </div>
+						<button type="button" class="borrow" >숙박 예약</button>
+					</div>
+				</div>
+			</div><!--box의 끝-->
+			<div class="box">
+				<div class="pic">
+					<img src="images/hotel3.jpg" style="width:350px; hegiht:220px;">
+				</div>
+				<div class="info">
+					<div class="half-left">
+						<strong class="room-title">방 이름</strong>
+						<strong>대실</strong>
+						<div class="price">
+							<p>20000원</p>
+							<hr>
+							<ul>
+								<li>
+									<span>마감시간</span>
+									23시까지
+								</li>
+								<li>
+									<span>이용시간</span>
+									최대 5시간
+								</li>
+							</ul>
+						 </div>
+						<button type="button" class="borrow" >대실 예약</button>
+					</div>
+					<div  class="half-right">
+						<strong class="room-title">방 이름</strong>
+						<strong>숙박</strong>
+						<div class="price">
+							<p>50000원</p>
+							<hr>
+							<ul>
+								<li>
+									<span>입실시간</span>
+									17시부터
+								</li>
+								<li>
+									<span>퇴실시간</span>
+									익일 12시
+								</li>
+							</ul>
+						 </div>
+						<button type="button" class="borrow" >숙박 예약</button>
+					</div>
+				</div>
+			</div><!--box의 끝-->
+				
+		</div>
+		<div id="footer">
+			<h2>푸터</h2>
+				
+		</div>
+	</div>
+</body>
+</html>

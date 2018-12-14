@@ -1,0 +1,177 @@
+@charset "UTF-8";
+input{
+   		padding:0;
+	    border:0 none;
+	    outline: none;
+   	}
+   	.input-text{
+   		border-bottom:1px solid #ccc;
+   		display:inline-block;
+   	}
+   	.tip{
+   		margin-left:5px;
+   		font-size: 14px;
+ 	 	color: #AAAAAA;
+   	}
+   	.little-container{
+   		width:1180px;
+   		height:1470px;
+   		padding:20px;
+   		margin:0 auto;
+   	}
+   	.room-iamge{
+   		display:inline-block;
+   		width:250px;
+   		height:160px;
+   	}
+   	#room-info{
+   		width:660px;
+   		padding:20px;
+   		margin-bottom:4px;
+   		display:inline-block;
+   	}
+   	
+   	.room-name{
+   		width:360px;
+   		height:160px;
+   		float:right;
+   	}
+   	.room-price{
+   		width:100%;
+   		height:50px;
+   		text-align:right;
+   		border-bottom: 1px solid #ccc;
+   	}
+   	.room-price span{
+   		margin-right: 115px;
+   	}
+   	.mileage-box{
+   		width:100%;
+   		height:130px;
+   		padding:20px;
+   		margin-bottom:87px;
+   		
+   	}
+   	.form-item{
+  	 	margin-top: 20px;
+   		height:80px;
+   		border-bottom: 1px solid #ccc;
+   	}
+   	.form-name{
+   		display:inline-block;
+   		font-size: 14px;
+  		color: #333;
+  		width:110px;
+   	}
+   	.form-name label{
+   		cursor:pointer;
+  		
+   	}
+   	.form-body{
+   		display:inline-block;
+   		margin-bottom: 30px;
+   	}
+   
+   	.user-info-box{
+   		width:100%;
+   		height:380px;
+   		padding:20px;
+   		margin-bottom:15px;
+   		
+   	}
+   	.user-info-box .info-title{
+   		margin-top: -10px;
+   	 
+    	margin-bottom: 28px;
+   		
+   	}
+   	.user-info-box .pay-way{
+   		margin-top:75px;
+   	 
+   		
+   	}
+   	.info-box{
+   		height:165px;
+   		border-bottom: 1px solid #ccc;
+   	}
+   	.terms-box{
+   		width:660px;
+   		height:580px;
+   		padding:20px;
+   		margin-bottom:15px;
+   		border-bottom: 1px solid #ccc;
+   	}
+   	.guide-box{
+   		margin-top:2px;
+   		width:635px;
+   		height:400px;
+   	}
+   	.guide-table{
+   		width:100%;
+   		text-align:center;
+   		
+   	}
+   	
+   	tr, td, th{
+   		color: #333;
+   		border:1px solid #ccc;
+   		font-size: 15px;
+   		padding: 9px 5px;
+
+   	}
+    thead{
+    	background: burlywood;
+    }
+   	
+   	#right-sidebar{
+   		position:fixed;
+   		right:370px;
+   		width:330px;
+   		height:500px;
+   		
+   	}
+   	.pay-box{
+   		width:660px;
+   		height:70px;
+   		padding:20px;
+   		margin-bottom:15px;
+   		border-bottom: 1px solid #ccc; 
+   	}
+   	.received-calendar{
+   		width:100%;
+   		height:170px;
+   		background: #404040;
+   	}
+    .pay-infor{
+   		width:100%;
+   		height:70%;
+   		margin-top: 10px;
+   		background: #404040;
+    }
+  	.pay-button button{
+   		cursor:pointer;
+   		display: block;
+	    width: 100%;
+	    height: 68px;
+	    border: none;
+	    font-size: 14px;
+	    color: #fff;
+	    text-align: center;
+	    background: -webkit-gradient(linear,left top,right bottom,color-stop(0,#ff5146),color-stop(100%,#ff2d7b));
+   	}
+   	#content{
+   		width:700px;
+   		padding:20px;
+   		float:left;
+   	}
+   	.room-iamge{
+   		background-image:url('../images/hotel3.jpg');
+   		background-size:cover;
+   	}
+    .user-info-box .info-box input{
+   		text-align:left;
+    }
+    .terms-box .guide-text{
+   		color: #666666;
+   		font-size:14px;
+    }

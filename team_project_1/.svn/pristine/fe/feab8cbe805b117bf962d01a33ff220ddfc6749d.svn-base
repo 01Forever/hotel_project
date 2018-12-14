@@ -1,0 +1,56 @@
+package xyz.for01.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import jdk.nashorn.internal.runtime.Context;
+import xyz.for01.dao.MemberDao;
+import xyz.for01.membervo.MemberVo;
+
+/**
+ * Servlet implementation class UserListModify
+ */
+@WebServlet("/userListModify")
+public class UserListModify extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response , String emailid , String delyn) throws ServletException, IOException {
+		MemberDao mDao = MemberDao.getInstance();
+		MemberVo mVo = mDao.selectUserByEmailidDelyn(emailid,delyn);
+		
+		request.setAttribute("user", mVo);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("userListModify.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String emailId = request.getParameter("emailId");
+		String nic = request.getParameter("nic");
+		String phone = request.getParameter("phone");
+		//String joindate = request.getParameter("joindate");
+		String grade = request.getParameter("grade");
+		String delyn = request.getParameter("delyn");
+
+		MemberVo mVo = new MemberVo();
+		mVo.setEmailid(emailId);
+		mVo.setNic(nic);
+		mVo.setPhone(phone);
+		//mVo.setJoindate(joindate);
+		mVo.setGrade(grade);
+		mVo.setDelyn(delyn);
+		
+		MemberDao mDao = MemberDao.getInstance();
+		mDao.userListModify(mVo);
+		
+		response.sendRedirect("userList.jsp");
+	}
+
+}

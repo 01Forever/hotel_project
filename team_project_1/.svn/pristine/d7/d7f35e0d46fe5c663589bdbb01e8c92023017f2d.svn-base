@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	rect {
+		fill: skyblue;
+		fill-opacity: 0.3;
+		stroke: skyblue;
+	}
+	rect:hover {
+		fill-opacity: 1;
+	}	
+</style>
+<svg height="300" style="width: 100%;"></svg>
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+	$.ajax("../ChartServlet", {
+		dataType : "json",
+		success : function(data) {
+		
+			var svg = d3.select("svg");
+								
+			for (var i = 0; i < data.length; i++) {
+				svg.append("rect")
+				.attr("height", data[i].count * 5)
+				.attr("width", 80)
+				.attr("x", 80 * i)
+				.attr("y", 100 - data[i].count * 5);
+			}
+			/* var xScale = d3.scaleBand()                                        
+		    .domain(dataset.map(function(d) { return d.x;} ))
+		    .range([0, width]).padding(0.2); */
+		
+		 	/* svg.selectAll("rect")
+			.data(data)
+			.enter().append("rect")
+			.rect(function(d) {return d.count})
+				.attr("class", "rect")
+				.attr("height", function(d,i){return d.count})
+				.attr("width", 40)
+				.attr("x", function(d, i) {return (50 * i)})
+		        .attr("y", function(d, i) {return (100 - data[i])});  */
+		    
+		   /*  svg.selectAll("text")
+		    .data(data)
+			.enter().append("text")
+			.text(function(d) {return d.count})
+				.attr("class","text")
+				.attr("x",function(d,i) {return 50 * i +10})
+				.attr("y",function(d,i) {return 250-d*5 +15}); */
+			 
+			
+			svg.selectAll("text")
+		    .data(data)
+		    .enter().append("text")
+		    .text(function(d) {return d.borugh})
+		        .attr("class", "text")
+		        .attr("x", function(d, i) {return 70 * i+10})
+		        .attr("y", function(d, i) {return 150});
+
+				
+			/* svg.append("g")                                                       
+		    .attr("transform", "translate(0," + (height) + ")")
+		    .call(d3.axisBottom(xScale)); */
+			}
+	});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

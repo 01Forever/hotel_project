@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ebe19567b2ff71bd86715aaea891e0bd&libraries=services"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ebe19567b2ff71bd86715aaea891e0bd&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ebe19567b2ff71bd86715aaea891e0bd"></script>
+<meta charset="UTF-8">
+<title>호텔 리스트</title>
+<style type="text/css">
+	body {
+		text-align: center;
+	}
+	#map, #hotelList {
+		display: inline-block;
+	}
+	#hotelList table, #hotelList table tr, #hotelList table td {
+		border: 1px solid black;
+	}
+	
+	#hotelList table {
+		
+	}
+	
+	#hotelList {
+		width: 400px; height: 400px;
+		overflow: auto;
+	}
+</style>
+</head>
+<body>
+<div>
+	<h2 id="addr"></h2>
+</div>
+<div id="hotelList">
+</div>
+<div id="map" style="width: 400px; height: 400px;"></div>
+<script type="text/javascript" src="./js/map2.js"></script>
+</body>
+</html>

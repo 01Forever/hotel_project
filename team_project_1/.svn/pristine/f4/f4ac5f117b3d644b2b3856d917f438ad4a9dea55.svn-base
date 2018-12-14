@@ -1,0 +1,35 @@
+<%@page import="com.google.gson.JsonObject"%>
+<%@page import="com.google.gson.JsonArray"%>
+<%@page import="xyz.for01.conn.Conn"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%
+      String sql = "SELECT HOTELNAME, WTMX, WTMY FROM HOTELLIST";
+      Connection conn = Conn.getConnection();
+      java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
+      java.sql.ResultSet rs = pstmt.executeQuery();
+      String hotelName = null;
+      String wtmX = null;
+      String wtmY = null;
+      List<String> list = new ArrayList<String>();
+      
+      JsonArray array = new JsonArray();
+      while (rs.next()) {
+         hotelName = rs.getString("hotelname");
+         wtmX = rs.getString("wtmx");
+         wtmY = rs.getString("wtmy");
+         JsonObject object = new JsonObject();
+         object.addProperty("hotelName", hotelName);
+         object.addProperty("wtmX", wtmX);
+         object.addProperty("wtmY", wtmY);
+         array.add(object);
+      }
+      out.println(array.toString());
+         
+      conn.close();
+      pstmt.close();
+      rs.close();
+%>

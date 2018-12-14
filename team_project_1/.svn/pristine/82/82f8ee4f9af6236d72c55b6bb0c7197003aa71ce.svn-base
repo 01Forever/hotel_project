@@ -1,0 +1,253 @@
+@charset "UTF-8";
+
+div{
+	/* border:1px solid #ccc; */
+}
+#container{
+	width:1100px;
+	padding:20px;
+	margin:0 auto;
+}
+
+.menu{
+	margin:auto;
+	width:900px;
+	height:200px;
+}
+.menu-left{
+	position:relative;
+	float:left;
+	width:430px;
+	height:200px;
+}
+.menu .menu-left .hotel-name h2{
+	font-size:28px;
+	font-weight:550; 
+}
+.tab-head{
+	position:absolute;
+	bottom:0;
+	width:430px;
+	height:50px;
+}
+.score{
+	position:relative;
+	bottom:0px;
+	width:430px;
+	height:50px;
+}
+.menu-right{
+	float:right;
+	width:430px;
+	height:200px;
+}
+.calendar{
+	width:100%;
+	height:80px;
+	background-color: #404040;
+}
+.calendar-head{
+	border: 0 none;
+	background: none;
+}
+.menu-right .calendar .calendar-head .start input{
+	border:0;
+	width:0;
+	cursor: pointer;
+}
+
+.review-head{
+	margin-top:10px;
+}
+.address-head{
+	margin-top:10px;
+}
+.address{
+	height:55px;
+	font-size:18px;
+	color: rgba(0,0,0,0.56);
+}
+#content{
+	padding:20px;
+}
+.box{
+	margin-bottom:25px;
+	margin-left: 65px;
+	border:1px solid #ccc;
+	width:914px;
+	height:250px;
+}
+.pic{
+	margin-top:14px;
+	margin-left:14px;
+	float:left;
+	width:350px;
+	height:220px;
+}
+.info{
+	margin-top:14px;
+	margin-right:14px;
+	float:right;
+	width:500px;
+	height:220px;
+}
+.half-left{
+	float:left;
+	width:240px;
+	height:220px;
+	padding-right: 10px;
+    border-right: 1px solid #ccc;
+}
+.half-right{
+	float:right;
+	width:240px;
+	height:220px;
+}
+.room-title{
+	display: block;
+	height: 37px;
+	padding: 0;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 1;
+}
+.price{
+	margin-top:30px;
+}
+.info .half-left .price p{
+	margin-top:10px;
+	text-align:right;
+}
+.info .half-left .price ul li{
+	position: relative;
+	margin-bottom: 7px;
+	font-size: 16px;
+	text-align: right;
+}
+.info .half-left .price ul li span{
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: rgba(0,0,0,0.56);
+}
+.info .half-right .price p{
+	margin-top:10px;
+	text-align:right;
+}
+.info .half-right .price ul li{
+	position: relative;
+	margin-bottom: 7px;
+	font-size: 16px;
+	text-align: right;
+}
+.info .half-right .price ul li span{
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: rgba(0,0,0,0.56);
+}
+.borrow{
+	display: block;
+	width: 100%;
+	height: 44px;
+	border: none;
+	border-radius: 0 0 4px 4px;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+	background: -webkit-gradient(linear,left top,right bottom,color-stop(0,#ff5146),color-stop(100%,#ff2d7b));
+}
+button{
+	cursor: pointer;
+}
+
+#footer{
+	padding:20px;
+	clear:both;
+}
+
+
+#sliderBox {
+	width:100%;
+	height:100%;
+}
+
+
+
+#closeSlider > ul li {
+	width:100%;
+	display: inline;
+}
+
+#hotelImg {
+	width: 100%;
+}
+.close .sliderBox .closeSlider .hotelImg li{
+	width: 100%;
+}
+.calendar{
+	float:left;
+	width:380px;
+	height:100px;
+	background-color: #404040;
+}
+.check-tab{
+	margin-bottom:15px;
+	color:#fff;
+}
+
+.check-in{
+	margin-left:50px;
+}
+.check-out{
+	float:right;
+	margin-right:50px;
+}
+  	
+.calendar-head{
+	border: 0 none;
+	background: none;
+}
+.menu .calendar-head .start input{
+	border:0;
+	width:0;
+	cursor: pointer;
+}
+.start{
+	display:inline-block;
+	width:160px;
+	font-size:30px;
+}
+.menu .calendar-head .last input{
+  	border:0;
+  	width:0;
+  	cursor: pointer;
+  	}
+
+.last{
+	display:inline-block;
+	width:160px;
+	font-size:30px;
+	float:right;
+	
+}
+.tab-head span{
+	/* border-bottom: 3px solid rgb(242,17,76); */
+    font-weight: bold;
+    color: rgb(230,28,81);
+ 
+}
+.tab-head button{
+	float: none;
+    width: auto;
+    margin-right: 24px;
+    padding: 0;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: none;
+    font-size: 18px;
+    color: rgba(0,0,0,0.38);
+}
+.menu-bottom{
+	width:900px;
+}

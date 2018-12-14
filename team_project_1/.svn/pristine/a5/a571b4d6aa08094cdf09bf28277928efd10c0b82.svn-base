@@ -1,0 +1,10 @@
+var myBarChart = new Chart(ctx, {
+
+
+    type: 'Line',
+
+    data: data,
+
+    options: options
+
+});

@@ -1,0 +1,44 @@
+$(function() {
+	
+	$('#mileage').on("keyup", function() {
+		var mil = this;
+		if(mil.value > $('#myMile').val()){
+			alert('마일리지를 이용하실 수 없습니다.');
+			if(!$('#myMile').val()){
+				document.getElementById("mileage").value = 0;
+			}else{
+				document.getElementById("mileage").value = $('#myMile').val();
+			}
+		}
+	}) // End
+
+});
+
+function paySubmit() {
+	$("#payFor").submit(); 
+}
+
+// 이름 정규식
+function nameCheck(str){
+	return (/^[가-힣]{2,4}$/).test(str);
+}
+
+//연락처 정규화
+function phonecheck() {
+	var reg_Exp = /^(?=.*?[0-9]).{11}$/;
+	if($("#phone").val() == ""){
+		$("#phoneText").text("연락처를 입력해주세요");
+	} else {
+		if (!regExp.test($("#phone").val())) {
+			$("#phoneText").text("바른 연락처가 아닙니다");
+			phoneCheck = false;
+		} else if (regExp.test($("#phone").val())){
+			$("#phoneText").text("바른 연락처입니다.");
+			phoneCheck = true;
+		}	
+	}
+}
+
+
+
+

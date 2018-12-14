@@ -1,0 +1,31 @@
+<%@page import="java.io.ByteArrayOutputStream"%>
+<%@page import="java.io.OutputStream"%>
+<%@page import="java.io.OutputStreamWriter"%>
+<%@page import="java.io.InputStream"%>
+<%@page import="java.net.URL"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+	String urlStr = "http://openapi.seoul.go.kr:8088/426c786b5a64686b3130325061707568/xml/SebcHotelListKor/1/5/";
+	URL url = new URL(urlStr);
+	InputStream is = url.openStream();
+	ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	
+	int i = 0;
+	while((i=is.read()) != -1) {
+		baos.write(i);
+	}
+	
+	out.print(baos);
+	
+%>
+<h2>hello world</h2>
+</body>
+</html>

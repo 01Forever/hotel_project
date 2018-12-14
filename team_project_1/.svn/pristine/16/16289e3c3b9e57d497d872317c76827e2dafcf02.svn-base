@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+#content{
+	width:100%;
+	height:100%;
+	display: inline-block;
+	float:left;
+}
+
+.room {
+	width:350px;
+	height:220px;
+	margin-bottom:50px;
+}
+
+.room-main {
+	width:60%; 
+	height:190px;
+	padding: 40px 0;
+	position: relative;
+	float:left;
+}
+
+.room-main a {
+	text-decoration: none;
+	color: black;
+}
+
+.image-box{
+	background-image:url('../images/hotel3.jpg'); 
+	background-size:cover;
+	width:30%;
+	height:190px;
+	margin-left: 220px;
+	position: relative;
+	overflow: hidden;
+	float: left;
+}
+
+.info-box {
+	width: 30%;
+	height: 190px;
+	padding-left: 20px;
+	display: inline-block;
+}
+
+.info-box div {
+	padding: 5px 0;
+}
+
+.text-title{
+	transform: translateY(-50%);
+	position: relative;
+	top: 50%;
+	width: 100%;
+	
+}
+
+.hotel-title{
+	font-size:25px;
+	color: black;
+	line-height:2;
+	display: block;
+	position: relative;
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+}
+
+.distance {
+	float: right;
+}
+
+.star {
+	color: #ffde00;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.grade {
+	font-size: 12px;
+}
+
+.address {
+	font-size: 15px;
+}
+
+.descript {
+	color: #aaa; 
+	font-size: 13px;
+}
+
+.price{
+	position: relative;
+	bottom: 2px;	
+}
+
+.content-pic  .price span:first-child{
+	margin-left:0;
+}
+
+.content-pic  .price span{
+	margin-left:10px;
+	color:#333;
+}
+
+.content-pic  .price span i{
+	font-size: 16px; 
+	font-style:normal;
+}
+
+.content-pic  .price span em{
+	font-size: 21px; 
+	margin-left: 10px;
+	font-style:normal;
+}
+
+.map_area {
+	padding: 20px 50px;
+	float: right;
+}
+
+#map{
+	position:fixed;
+	right:0;
+	width: 40%;
+	height:1000px;
+	margin: 40px 150px 0 0;
+}
+
+ul{
+	list-style:none;
+	padding-left:0px;
+}

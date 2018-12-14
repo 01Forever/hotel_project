@@ -1,0 +1,37 @@
+/**
+ * 
+ */
+
+$(document).ready(function() {	
+	$('#other li').hover(function() {
+		$('ul', this).slideDown(200);
+		$(this).children('a:first').addClass("hov");
+	}, function() {
+		$('ul', this).slideUp(100);
+		$(this).children('a:first').removeClass("hov");		
+	});
+});
+
+$(function() {
+	$("#closeSlider").bxSlider({
+		auto: true, 
+		mode: 'fade',
+		autoHover: true
+	});
+});
+
+$(function() {
+	$("#eventSlider").bxSlider({
+		auto: true, 
+		mode: 'horizontal',
+		autoHover: true
+	});
+});
+
+$(function() {
+	$("#checkIn").datepicker({ dateFormat : 'yy-mm-dd'});
+});
+
+$(function() {
+	$("#checkOut").datepicker({ dateFormat : 'yy-mm-dd'});
+});

@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+#container{
+  	width:1400px;
+  	padding:150px 0 0 0;
+  	margin:0 auto;
+}
+  
+#content{
+  	
+  	padding:20px;
+}
+.head-category{
+	font-size:23px;
+	font-weight:600;
+}
+.menu{
+  	width: 1236px;
+  	height:100px;
+  	margin:0 auto;
+}
+.calendar{
+  	float:left;
+  	width:380px;
+  	height:100px;
+  	background-color: #404040;
+}
+.check-tab{
+   	padding: 10px 0;
+  	color:#fff;
+}
+  	
+#check-in{
+	margin-left:60px;
+}
+#check-out{
+	float:right;
+	margin-right:50px;
+}
+  	
+.calendar-head{
+	border: 0 none;
+	background: none;
+}
+.start{
+	display:inline-block;
+	width:170px;
+	font-size:30px;
+}
+
+.start input {
+	margin-left: 10px;
+    width: 160px;
+	background-color: transparent;
+    border: 0 solid black;
+	font-size: 30px;
+	cursor: pointer; 
+	color: rgba(188, 55, 72, 15);
+}
+
+.last{
+	display:inline-block;
+	width:170px;
+	font-size:30px;
+	float:right;	
+}
+
+.last input {
+	margin-left: 10px;
+    width: 160px;
+	background-color: transparent;
+    border: 0 solid black;
+	font-size: 30px;
+	cursor: pointer; 
+	color: rgba(188, 55, 72, 15);
+}
+.category{
+	background:darkblue;
+	float:right;
+	width:845px;
+	height:100px;
+	
+}
+.category-tab{
+	margin-top:40px;
+}
+.category ul{
+	margin-left:38px;
+}
+.category ul li{
+	font-size:20px;
+	display:inline;
+	padding:0 10px;
+}
+.category ul li a{
+	color:#ccf;
+	text-decoration:none
+}
+.menu-bottom{
+	margin-top:25px;
+}
+.main{
+	padding:20px;
+	width: 900px;
+	margin:0 auto;
+}
+.list{
+	padding-left: 125px;
+
+}
+.box{
+	display:inline-block;
+	
+	margin-top:20px;
+	margin-left:22px;
+	height: 220px;
+	width:622px;
+	border-bottom:1px solid #ccc;
+}
+
+.box a {
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+}
+
+.image-box{
+	display:inline-block;
+	height:200px;
+	width:350px;
+}
+.infor{
+	display:inline-block;
+	height:200px;
+	width:255px;
+	position: absolute;
+	margin-left: 13px;
+}
+.search-title{
+	font-size:23px;
+	font-weight:400;
+	height: 50px;
+	padding-top: 10px;
+	display: table;
+}
+
+.search-title span {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.star {
+	font-size: 1.5em;
+	padding: 10px 0;
+	color: #ff2d60;
+}
+
+.price-rab .price-item i b{
+	font-weight: 600;
+}
+.price-rab .price-item i small{
+ 	font-size: 14px;
+    color: #888;
+  
+}
+.price-type{
+	min-width: 120px;
+	padding: 20px 0;
+	display:block;
+}
+.price-reserve{
+	background-color: #ff2d60;
+	color:#fff;
+	font-size: 12px;
+	padding: 1px 4px 2px;
+}
+.recommend-price{
+	float:right;
+}
+.price-part{
+	font-size:22px;
+	vertical-align: text-top
+}
+.price-rab .price-type .won {
+	font-size:3px;
+}
+.won{
+	font-size:24px;
+}

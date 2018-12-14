@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<jsp:include page="./comm/head.jsp" />
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/button.css">
+<link rel="stylesheet" type="text/css" href="./css/join.css">
+<script src="./js/join.js" ></script>
+<title>회원 가입</title>
+</head>
+<body>
+<div class="container">
+	<jsp:include page="./comm/header.jsp"/>
+	<div class="member_table">
+		<h2>회원정보입력</h2>
+		<form action="join" method="post" id="frm" name="frm">
+			<table>
+				<tr>
+					<td colspan="2"><label for="emailId">이메일아이디<span>*</span></label></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="emailId" id="emailId" />
+						<div id="emailPermissionText"></div>
+					</td>
+					<td><button type="button" class="btn-email" onclick="check()">이메일인증</button></td>
+				</tr> 
+				<tr>
+				<tr>
+					<td colspan="2"><label for="pwd">비밀번호<span>*</span></label></td>
+				</tr>
+				<tr>
+					<td><input type="password" name="pwd" id="pwd" onkeyup="pwdChange()" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><label for="pwd_check">비밀번호 확인<span>*</span></label></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="password" name="pwd_check" id="pwd_check" onkeyup="pwdChange()" />
+						<div id="pwdResult"></div> <!-- 비밀번호 문자오는곳 -->
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><label for="phone">연락처</label></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" id="phone" name="phone" onkeyup="phoneCheck()" />
+						<p id="phoneText"></p>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><label for="nic">닉네임</label></td>
+				</tr>
+				<tr>
+					<td><input type="text" id="nic" name="nic" /></td>
+					<td><button type="button" onclick="nic_re()">다른 닉네임</button></td>
+				</tr>
+			</table>
+			
+			<!-- 
+			<div class="condition_check">
+				<input type="checkbox" value="1"> 로그인/회원가입시 <a href="#">이용약관</a>,
+				<a href="#">개인정보처리방침</a>에 동의하게 됩니다.
+			</div>
+			-->
+			<div class="button_area">
+				<button class="btn save" type="button" onclick="submitCheck();"><span>확인</span></button>
+				<button class="btn cancel" type="reset" value="취소"><span>취소</span></button>
+				<button class="btn cancel" type="button" value="목록으로돌아가기" onclick="location.href='/'"><span>목록</span></button>
+			</div>
+		</form>
+	</div>
+	<jsp:include page="./comm/footer.jsp" />
+</div>
+</body>
+</html>

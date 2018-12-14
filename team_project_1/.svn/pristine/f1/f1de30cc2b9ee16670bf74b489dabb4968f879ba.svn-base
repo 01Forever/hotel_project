@@ -1,0 +1,82 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<title>요기죠기</title>
+</head>
+<body>
+<select id="select">
+  <option value="">전체 상태</option>
+  <option value="0">입금 확인중</option>
+  <option value="1">결제 완료</option>
+  <option value="2">방문 완료</option>
+  <option value="3">취소</option>
+</select>
+
+<div id="resList">
+
+</div>
+</body>
+
+<script type="text/javascript">
+
+
+var f = function() {
+	$.ajax("resListPage",{
+		dataType : 'json',   
+	    async : true,
+	    data: {
+	    	"resStat" : $("#select").val()
+	    },
+	    success : function(data){
+			
+				$("#resList").append("<ul></ul>");
+		    	$("#resList").append("<ul></ul>").empty();
+		    	var div = '';
+		    	
+		    	for(var i=0; i<data.length; i++){
+		    		var resStat;
+		    		
+		    		div += '<li><a href="#'
+		    			+ data[i].res_idx
+		    			+ '"><div>'
+		    			+ data[i].hotelName
+		    			+ '</div><div>'
+				   		+ data[i].roomName
+			   			+ '</div><div>'
+			   			+ data[i].res_start
+			   			+ '</div><div>'
+			   			+ data[i].res_end
+			   			+ '</div><div>'
+			   			+ data[i].price
+			   			+ '</div><div>'
+			   			+ data[i].resDate
+			   			+ '</div><div>';
+			   			
+			   		if(data[i].resStat == "0"){
+			   			resStat = "입금 확인중";
+			   		}else if(data[i].resStat == "1"){
+			   			resStat = "결제 완료";
+			   		}else if(data[i].resStat == "2"){
+			   			resStat = "방문 완료";
+			   		}else{
+			   			resStat = "취소";
+			   		}
+			   		
+			   		div += resStat
+			   			+ '</div></a></li>';	
+		    	}
+		    	
+		    	$("#resList").append("<ul></ul>").children().html(div);
+			
+	    }
+	});
+}
+$("#select").change(f);
+f();
+
+</script>
+</html>

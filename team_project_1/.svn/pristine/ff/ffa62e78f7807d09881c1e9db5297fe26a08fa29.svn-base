@@ -1,0 +1,120 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<jsp:include page="./comm/head.jsp"/>
+<style>
+	header {
+		background-color: gray;
+		position: relative;
+		height: 300px;
+	}
+	
+	.contents {
+		background-color: #eee;
+		width: 60%;
+		height: 1000px;
+		margin: 0 auto;
+		padding-top: 30px;
+	}
+	
+	.otherList {
+		background-color: gray;
+		font-size: 18px;
+		width: 15%;
+		padding: 20px 0;
+		margin-right: 70px;
+		float: left;
+		line-height: 3;
+	}
+	
+	.otherList a {
+		padding-left: 15px;
+	}
+	
+	#condition {
+		background-color: black;
+	}
+	
+	.content {
+		width: 95%;
+	}
+	
+	.tab {
+		overflow: hidden;
+		border-bottom: 1px solid gray;
+		padding-bottom: 20px;
+	}
+	
+	.tabList {
+		overflow: hidden;
+		display: block;
+	}
+	
+	.tabList b {
+		font-size: 18px;
+	}
+	
+	.tabList div {
+		width: 700px;
+		height: 200px;
+		margin: 30px 0;
+		overflow-x: hidden; 
+		overflow-y: auto;
+	}	
+</style>
+<meta charset="UTF-8">
+<title>더보기 - 공지사항</title>
+</head>
+<body>
+<div class="container">
+	<jsp:include page="./comm/header.jsp"/>
+	<div class="contents">
+		<div class="otherList">
+			<ul>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">이벤트</a></li>
+				<li><a href="#">자주 묻는 질문</a></li>
+				<li><a href="#">1:1 문의</a></li>
+				<li id="condition"><a href="#">약관 및 정책</a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="tab">
+				<ul>
+					<li>약관 및 정책</li>
+				</ul>
+			</div>
+			<div class="tabList">
+				<b>약관</b>
+				<div id="terms">
+					<p>국가는 농수산물의 수급균형과 유통구조의 개선에 노력하여 가격안정을 도모함으로써 농·어민의 이익을 보호한다. 국회의원이 회기전에 체포 또는 구금된 때에는 현행범인이 아닌 한 국회의 요구가 있으면 회기중 석방된다.</p>
+
+					<p>국회의원과 정부는 법률안을 제출할 수 있다. 재의의 요구가 있을 때에는 국회는 재의에 붙이고, 재적의원과반수의 출석과 출석의원 3분의 2 이상의 찬성으로 전과 같은 의결을 하면 그 법률안은 법률로서 확정된다.</p>
+					
+					<p>국회는 헌법 또는 법률에 특별한 규정이 없는 한 재적의원 과반수의 출석과 출석의원 과반수의 찬성으로 의결한다. 가부동수인 때에는 부결된 것으로 본다.</p>
+					
+					<p>국방상 또는 국민경제상 긴절한 필요로 인하여 법률이 정하는 경우를 제외하고는, 사영기업을 국유 또는 공유로 이전하거나 그 경영을 통제 또는 관리할 수 없다.</p>
+					
+					<p>모든 국민은 주거의 자유를 침해받지 아니한다. 주거에 대한 압수나 수색을 할 때에는 검사의 신청에 의하여 법관이 발부한 영장을 제시하여야 한다. 모든 국민은 법 앞에 평등하다. 누구든지 성별·종교 또는 사회적 신분에 의하여 정치적·경제적·사회적·문화적 생활의 모든 영역에 있어서 차별을 받지 아니한다.</p>
+				</div>
+				<b>정책</b>
+				<div id="policy">
+					<p>모든 국민은 직업선택의 자유를 가진다. 대통령은 조국의 평화적 통일을 위한 성실한 의무를 진다. 제1항의 탄핵소추는 국회재적의원 3분의 1 이상의 발의가 있어야 하며, 그 의결은 국회재적의원 과반수의 찬성이 있어야 한다. 다만, 대통령에 대한 탄핵소추는 국회재적의원 과반수의 발의와 국회재적의원 3분의 2 이상의 찬성이 있어야 한다.</p>
+
+					<p>대통령은 헌법과 법률이 정하는 바에 의하여 공무원을 임면한다. 국민의 자유와 권리는 헌법에 열거되지 아니한 이유로 경시되지 아니한다. 모든 국민은 소급입법에 의하여 참정권의 제한을 받거나 재산권을 박탈당하지 아니한다.</p>
+					
+					<p>저작자·발명가·과학기술자와 예술가의 권리는 법률로써 보호한다. 정당의 목적이나 활동이 민주적 기본질서에 위배될 때에는 정부는 헌법재판소에 그 해산을 제소할 수 있고, 정당은 헌법재판소의 심판에 의하여 해산된다.</p>
+					
+					<p>군사재판을 관할하기 위하여 특별법원으로서 군사법원을 둘 수 있다. 대통령·국무총리·국무위원·행정각부의 장·헌법재판소 재판관·법관·중앙선거관리위원회 위원·감사원장·감사위원 기타 법률이 정한 공무원이 그 직무집행에 있어서 헌법이나 법률을 위배한 때에는 국회는 탄핵의 소추를 의결할 수 있다.</p>
+					
+					<p>국회에 제출된 법률안 기타의 의안은 회기중에 의결되지 못한 이유로 폐기되지 아니한다. 다만, 국회의원의 임기가 만료된 때에는 그러하지 아니하다. 제2항의 재판관중 3인은 국회에서 선출하는 자를, 3인은 대법원장이 지명하는 자를 임명한다.</p>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+</body>
+</html>

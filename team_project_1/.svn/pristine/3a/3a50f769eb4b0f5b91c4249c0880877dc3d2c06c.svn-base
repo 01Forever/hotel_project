@@ -1,0 +1,10 @@
+function payCheck(){
+	if(document.getElementsByName("pay").value == "noBankBook"){
+		return true;
+	}
+	if(document.getElementsByName("pay").value == "card"){
+		 
+	}
+	
+	return true;
+}

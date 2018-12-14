@@ -1,0 +1,26 @@
+function boardCheck(){
+	if(document.frm.title.value.length ==0){
+		alert("제목을 입력해주세요.");
+		frm.title.focus();
+		return false;
+	}
+	if(document.frm.content.value.length==0){
+		alert("내용을 입력해주세요.");
+		frm.content.focus();
+		return false;
+	}
+	return true;
+/* 	if(document.frm.startdate.value.length==0){
+		alert("이벤트 시작일을 지정해주세요.");
+		frm.startdate.focus();
+		return false;
+	}
+	if(document.frm.enddate.value.length==0){
+		alert("이벤트 마감일을 지정해주세요.");
+		frm.enddate.focus();
+		return false;
+	}
+	 */
+	
+	
+}

@@ -1,0 +1,124 @@
+/*$(document).ready(function(){
+    $("#date_pretty").datepicker({ 
+    });
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1;
+    var prettyDate = month + '/' + myDate.getDate() + '/' + myDate.getFullYear();
+    $("#date_pretty").val(prettyDate);
+});
+$(function() {
+	$("date_pretty").datepicker("setDate", "today");
+});*/
+
+$(function() {
+    //모든 datepicker에 대한 공통 옵션 설정
+    $(".datepicker").datepicker({
+        dateFormat: 'yy-mm-dd', //Input Display Format 변경
+        showOtherMonths: true, //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+        showMonthAfterYear:true, //년도 먼저 나오고, 뒤에 월 표시
+        changeYear: true, //콤보박스에서 년 선택 가능
+        changeMonth: true, //콤보박스에서 월 선택 가능                
+//        showOn: "both", //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+//        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", //버튼 이미지 경로
+        buttonImageOnly: true, //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+        buttonText: "선택", //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+        yearSuffix: "년", //달력의 년도 부분 뒤에 붙는 텍스트
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'], //달력의 월 부분 텍스트
+        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], //달력의 월 부분 Tooltip 텍스트
+        dayNamesMin: ['일','월','화','수','목','금','토'], //달력의 요일 부분 텍스트
+        dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'], //달력의 요일 부분 Tooltip 텍스트
+        minDate: 0, //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+        maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
+    });
+    
+    $('#res_Start').datepicker();
+    $('#res_Start').datepicker("option", "maxDate", $("#res_End").val());
+    $('#res_Start').datepicker("option", "onClose", function (selectedDate) {
+        $("#res_End").datepicker("option", "minDate", selectedDate);
+        var getParameters = function (paramName) { 
+        	// 리턴값을 위한 변수 선언 
+        	var returnValue; 
+        	// 현재 URL 가져오기 
+        	var url = location.href;
+        	// get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔 
+        	var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&'); 
+        	// 나누어진 값의 비교를 통해 paramName 으로 요청된 데이터의 값만 return 
+        	for (var i = 0; i < parameters.length; i++) { 
+        		var varName = parameters[i].split('=')[0]; 
+        		if (varName.toUpperCase() == paramName.toUpperCase()) { 
+        			returnValue = parameters[i].split('=')[1]; 
+        			return decodeURIComponent(returnValue); 
+        		} 
+        	} 
+        };
+        
+        //현재 주소를 가져온다.
+        var renewURL = location.href;
+        //현재 주소 중 page 부분이 있다면 날려버린다.
+        renewURL = renewURL.substr(0,renewURL.indexOf("?"));
+         
+        
+        //새로 부여될 페이지 번호를 할당한다.
+        // page는 ajax에서 넘기는 page 번호를 변수로 할당해주거나 할당된 변수로 변경
+        // renewURL += '&page='+page;
+        renewURL += '?borugh=' + getParameters('borugh') + '&res_Start=' +  $("#res_Start").val() + '&res_End=' + $("#res_End").val(); 
+        //+ '&hotelNo=' + $("#hotelNo").val();
+        //페이지 갱신 실행!
+        history.pushState(null, null, renewURL);
+        
+       /* $.ajax ({
+        	url : "HotelSearch",
+        	type : "get",
+        	data : {
+        		"hotelName" : ${hotel.hotelName}
+        		"price" : ${hotel.price}
+        	},
+        	dataType : 'json',
+        	success : function(getdata) {
+        		$('div[id^="main"]').load("search.jsp", {
+        			
+        		});
+        	}
+        });*/
+    });
+ 
+    $('#res_End').datepicker();
+    $('#res_End').datepicker("option", "minDate", $("#res_Start").val());
+    $('#res_End').datepicker("option", "onClose", function (selectedDate) {
+        $("#res_Start").datepicker("option", "maxDate", selectedDate);
+    });
+});
+
+
+
+/*$(function(){
+	$('#datepicker_text').html(function(){
+		var now = new Date();
+		return now.getFullYear()+"-" + (now.getMonth()+1)+"-"+(now.getDate()<10 ? "0" + now.getDate() : now.getDate())
+	});
+	$("#datepicker_cal").change(function(){
+		$('#datepicker_text').html($(this).val());
+		
+	}).datepicker().datepicker("option", "dateFormat", "yy-mm-dd");
+	
+	
+	$('#datepicker_text2').html(function(){
+		var now = new Date();
+		return now.getFullYear()+"-" + (now.getMonth()+1)+"-"+(now.getDate()<10 ? "0" + now.getDate() : now.getDate())
+	});
+	$("#datepicker_cal2").change(function(){
+		$('#datepicker_text2').html($(this).val());
+		
+	}).datepicker().datepicker("option", "dateFormat", "yy-mm-dd");
+	
+});*/
+
+
+
+$(function() {
+	$("#closeSlider").bxSlider({
+		auto: true, 
+		mode: 'fade',
+		autoHover: true
+	});
+});

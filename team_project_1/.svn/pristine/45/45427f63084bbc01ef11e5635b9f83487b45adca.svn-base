@@ -1,0 +1,336 @@
+@charset "UTF-8";
+
+/* div{
+ 	border:1px solid #ccc;
+} */
+
+a{
+	text-decoration:none
+}
+#container-reserve{
+	height:100%;
+	width:900px;
+	padding:20px;
+	margin:0 auto;
+}
+
+.menu{
+	margin:auto;
+	width:900px;
+	height:264px;
+	margin-left: 517px;
+}
+.menu-left{
+	position:relative;
+	float:left;
+	width:430px;
+	height:200px;
+}
+.menu .menu-left .hotel-name h2{
+	font-size:28px;
+	font-weight:550; 
+}
+#detail-button{
+	margin-top: 110px;
+	
+}
+.tab-head{
+	position:absolute;
+	bottom:0;
+	width:430px;
+	height:50px;
+}
+.score{
+	position:relative;
+	bottom:0px;
+	width:430px;
+	height:50px;
+}
+.menu-right{
+	float:right;
+	width:430px;
+	height:200px;
+}
+.calendar{
+	width:100%;
+	height:80px;
+	background-color: #404040;
+}
+.calendar-head{
+	border: 0 none;
+	background: none;
+	margin-left:3px;
+}
+.menu-right .calendar .calendar-head .start input{
+	border:0;
+	width:0;
+	cursor: pointer;
+}
+
+.review-head{
+	margin-top:10px;
+}
+.address-head{
+	margin-top:10px;
+}
+.address{
+	height:55px;
+	font-size:18px;
+	color: rgba(0,0,0,0.56);
+}
+#content-reserve{
+	height:100%;
+	padding:20px;
+}
+.box{
+	margin-bottom:25px;
+	
+	border:1px solid #ccc;
+	width:914px;
+	height:250px;
+}
+.pic{
+	margin-top:14px;
+	margin-left:14px;
+	float:left;
+	width:350px;
+	height:220px;
+}
+.info{
+	margin-top:14px;
+	margin-right:14px;
+	float:right;
+	width:500px;
+	height:220px;
+}
+
+.half-right{
+	
+	width:100%;
+	height:220px;
+}
+.room-title{
+	display: block;
+	height: 37px;
+	padding: 0;
+	font-size: 23px;
+	font-weight: bold;
+	line-height: 1;
+}
+.price{
+	
+	margin-top:22px;
+    margin-bottom: 24px;
+}
+.info .half-left .price p{
+	margin-top:10px;
+	text-align:right;
+}
+.info .half-left .price ul li{
+	position: relative;
+	margin-bottom: 7px;
+	font-size: 16px;
+	text-align: right;
+}
+.info .half-left .price ul li span{
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: rgba(0,0,0,0.56);
+}
+.info .half-right .room-content{
+		font-weight:600; 
+	
+}
+.info .half-right .price .room-price{
+	color: rgba(242,17,76,1);
+	font-size:35px;
+	float:right;
+}
+.info .half-right .price .price-text{
+	vertical-align:-webkit-baseline-middle;
+}
+.info .half-right .infor-time ul li{
+	position: relative;
+	margin-bottom: 7px;
+	font-size: 16px;
+	text-align: right;
+}
+.info .half-right .infor-time ul li span{
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: rgba(0,0,0,0.56);
+}
+.borrow{
+	display: block;
+	width: 100%;
+	height: 44px;
+	border: none;
+	border-radius: 0 0 4px 4px;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+	background: -webkit-gradient(linear,left top,right bottom,color-stop(0,#ff5146),color-stop(100%,#ff2d7b));
+}
+button{
+	cursor: pointer;
+}
+
+#footer{
+	padding:20px;
+	clear:both;
+}
+
+
+#sliderBox {
+	width:100%;
+	height:100%;
+}
+
+
+
+#closeSlider > ul li {
+	width:100%;
+	display: inline;
+}
+
+#hotelImg {
+	width: 100%;
+}
+.close .sliderBox .closeSlider .hotelImg li{
+	width: 100%;
+}
+.calendar{
+	float:left;
+	width:380px;
+	height:100px;
+	background-color: #404040;
+}
+.check-tab{
+	margin-bottom:15px;
+	color:#fff;
+}
+
+.check-in{
+	margin-left:60px;
+}
+.check-out{
+	float:right;
+	margin-right:50px;
+}
+  	
+.calendar-head{
+	border: 0 none;
+	background: none;
+}
+
+.start{
+	display:inline-block;
+	width:170px;
+	font-size:30px;
+}
+
+.start input {
+	margin-left: 10px;
+	background-color: transparent;
+    border: 0 solid black;
+	font-size: 30px;
+	cursor: pointer; 
+	color: rgba(188, 55, 72, 15);
+}
+
+.last{
+	display:inline-block;
+	width:170px;
+	font-size:30px;
+	float:right;	
+}
+
+.last input {
+	margin-left: 10px;
+	background-color: transparent;
+    border: 0 solid black;
+	font-size: 30px;
+	cursor: pointer; 
+	color: rgba(188, 55, 72, 15);
+}
+.tab-head span{
+	/* border-bottom: 3px solid rgb(242,17,76); */
+    font-weight: bold;
+    color: rgb(230,28,81);
+ 
+}
+.tab-head button{
+	float: none;
+    width: auto;
+    margin-right: 24px;
+    padding: 0;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: none;
+    font-size: 18px;
+    color: rgba(0,0,0,0.38);
+}
+.menu-bottom{
+	width:914px;
+	margin-left:500px;
+}
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    /* border: 1px solid #ccc;
+    background-color: #f1f1f1; */
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    /* border: 1px solid #ccc; */
+    border-top: none;
+}
+
+#map {
+	margin: 0 auto;
+}
+	.review{
+		text-align:center;
+		width:100%;
+		height: 150px;
+	}
+	.review-star, .all-review{
+		height:50px;
+	    width:60%;
+	    margin-top:10px;
+	    display: inline-block;
+	}
+	.review-bottom{
+		width: 914px;
+	}
+	.review-tab{
+		height: 300px;
+   		width: 100%;
+	}

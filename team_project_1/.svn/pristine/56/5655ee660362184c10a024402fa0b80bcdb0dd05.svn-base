@@ -1,0 +1,45 @@
+<%@page import="com.google.gson.JsonObject"%>
+<%@page import="com.google.gson.JsonArray"%>
+<%@page import="xyz.for01.conn.Conn"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%
+      String sql = "SELECT HOTELNO, GRADE, HOTELNAME, ADDRESS, WTMX, WTMY FROM HOTEL";
+      Connection conn = Conn.getConnection();
+      java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
+      java.sql.ResultSet rs = pstmt.executeQuery();
+      double hotelNo = 0;
+      int grade = 0;
+      String hotelName = null;
+      String address = null;
+      String wtmX = null;
+      String wtmY = null;
+      List<String> list = new ArrayList<String>();
+      
+      JsonArray array = new JsonArray();
+      while (rs.next()) {
+    	 hotelNo = rs.getDouble("hotelno");
+    	 grade = rs.getInt("grade");
+         hotelName = rs.getString("hotelname");
+         address = rs.getString("address");
+         wtmX = rs.getString("wtmx");
+         wtmY = rs.getString("wtmy");
+         
+         JsonObject object = new JsonObject();
+         object.addProperty("hotelNo", hotelNo);
+         object.addProperty("grade", grade);
+         object.addProperty("hotelName", hotelName);
+         object.addProperty("address", address);
+         object.addProperty("wtmX", wtmX);
+         object.addProperty("wtmY", wtmY);
+         array.add(object);
+      }
+      out.println(array.toString());
+         
+      conn.close();
+      pstmt.close();
+      rs.close();
+%>

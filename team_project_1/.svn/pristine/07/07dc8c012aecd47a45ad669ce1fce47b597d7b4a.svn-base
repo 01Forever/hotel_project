@@ -1,0 +1,86 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.security.SecureRandom"%>
+<%@ page import="java.math.BigInteger"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>임시 로그인 페이지입니다</title>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+</head>
+<body>
+	<form action="login" method="post" name="loginfrm">
+		<span>아이디</span><input type="text" name="emailid"
+			value="${loginUser.emailid}" id="emailid" /> <span>비밀번호</span><input
+			type="password" name="pwd" id="pwd" />
+
+		<button type="button" onclick="ajaxs()">로그인</button>
+		<input type="reset" value="취소" onclick="location.href='/'"> <input
+			type="button" value="회원가입">
+	</form>
+
+	<div id="naverIdLogin"></div>
+<div id="naver_id_login"></div>
+	<script type="text/javascript">
+		function ajaxs() {
+			alert("아작스진입 ");
+			alert("통신시도");
+			$.ajax({
+				url : "/loginCheck",
+				type : "POST",
+				dataType : "JSON",
+				data : {
+					emailid : $("#emailid").val(),
+					pwd : $("#pwd").val()
+				},
+				success : function(data) {
+					if (data.result == "1") {
+						alert("존재하지 않는 아이디 입니다.");
+						return;
+					} else if (data.result == "2") {
+						$(document.loginfrm).submit();
+					} else {
+						alert("비밀번호가 일치하지 않습니다.");
+					}
+				},
+				error : function(xhr) {
+					alert("통신이 실패했어요");
+					console.log(xhr);//문제가 있을시에 이부분에 에러 처리한다
+				}
+			});
+		}
+		/*		
+		var naverLogin = new naver.LoginWithNaverId({
+			clientId : "KMvZrqKKTCI7WHxmBDVy",
+			callbackUrl : "https://donyubi.xyz/callback.jsp",
+			isPopup : false, // 팝업을 통한 연동처리 여부
+			loginButton : {
+				color : "green",
+				type : 3,
+				height : 60
+			}
+		// 로그인 버튼의 타입을 지정 
+		});
+
+		// 설정정보를 초기화하고 연동을 준비 
+		naverLogin.init();
+		 */
+
+		var naver_id_login = new naver_id_login("KMvZrqKKTCI7WHxmBDVy", "http://donyubi.xyz/callback.jsp");
+		var state = naver_id_login.getUniqState();
+		naver_id_login.setButton("white", 2, 40);
+		naver_id_login.setDomain("http://donyubi.xyz/callback.jsp");
+		naver_id_login.setState(state);
+		naver_id_login.setPopup();
+		naver_id_login.init_naver_id_login();
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+package xyz.for01.hotelvo;
+
+public class HotelVo {
+	private int hotelNo;
+	private String hotelGrade;
+	private String admin;
+	private String hotelName;
+	private String address;
+	private String city;
+	private String borush;
+	private double wtmX;
+	private double wtmY;
+	
+	public HotelVo() {}
+	
+	public HotelVo(int hotelNo, String hotelGrade, String admin, String hotelName, String address, String city,
+			String borush, double wtmX, double wtmY) {
+		super();
+		this.hotelNo = hotelNo;
+		this.hotelGrade = hotelGrade;
+		this.admin = admin;
+		this.hotelName = hotelName;
+		this.address = address;
+		this.city = city;
+		this.borush = borush;
+		this.wtmX = wtmX;
+		this.wtmY = wtmY;
+	}
+
+	public int getHotelNo() {
+		return hotelNo;
+	}
+
+	public void setHotelNo(int hotelNo) {
+		this.hotelNo = hotelNo;
+	}
+
+	public String getHotelGrade() {
+		return hotelGrade;
+	}
+
+	public void setHotelGrade(String hotelGrade) {
+		this.hotelGrade = hotelGrade;
+	}
+
+	public String getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
+
+	public String getHotelName() {
+		return hotelName;
+	}
+
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getBorush() {
+		return borush;
+	}
+
+	public void setBorush(String borush) {
+		this.borush = borush;
+	}
+
+	public double getWtmX() {
+		return wtmX;
+	}
+
+	public void setWtmX(double wtmX) {
+		this.wtmX = wtmX;
+	}
+
+	public double getWtmY() {
+		return wtmY;
+	}
+
+	public void setWtmY(double wtmY) {
+		this.wtmY = wtmY;
+	}
+
+}

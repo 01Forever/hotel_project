@@ -1,0 +1,193 @@
+@charset "UTF-8";
+
+#container{
+  	width: 100%;
+  	padding: 140px 0 0 0;
+  	margin:0 auto;
+  	overflow: hidden;
+}
+  
+#content{
+  	width: 80%;
+  	margin: 0 auto;
+}
+.menu{
+  	width: 100%;
+  	height:100px;
+}
+.calendar{
+  	width: 60%;
+  	height: 100px;
+  	margin: 0 auto;
+  	position: relative;
+  	background-color: #404040;
+}
+.check-tab{
+   	width: 100%;
+   	position: relative;
+   	padding: 10px 0;
+   	color:#fff;
+}
+  	
+#check-in{
+	text-align: center;
+	width: 50%;
+	display: inline-block;
+}
+
+#check-out{
+	display: inline-block;
+	position: absolute;
+	width: 50%;
+	text-align: center;
+}
+
+.start{
+	display: inline-block;
+	width: 50%;
+}
+
+.start input {
+	width: 100%;
+	background-color: transparent;
+	border: 0 solid black;
+	font-size: 30px;
+	cursor: pointer;
+	color: rgba(188, 55, 72, 15);
+	text-align: center;
+}
+
+.last{
+	display:inline-block;
+	width: 50%;
+	float:right;
+}
+
+.last input {
+	text-align: center;
+	width: 100%;
+	background-color: transparent;
+	border: 0 solid black;
+	font-size: 30px;
+	cursor: pointer;
+	color: rgba(188, 55, 72, 15);
+}
+
+.menu-bottom{
+	margin-top:25px;
+}
+
+
+.main{width: 100%;}
+.main ul:after {content: ''; width:0px; height: 0px; display: block; clear: both;}
+.box{
+	display: inline-block;
+	float: left;
+	margin: 10px 14px;
+	width: 47%;
+	height: 200px;
+	position: relative;
+	border:1px solid #ccc;
+}
+
+.image-box{
+	display:inline-block;
+	width: 50%;
+	height:200px;
+}
+
+.infor{
+	display: inline-block;
+	width: 40%;
+	height: 200px;
+	position: absolute;
+	padding-left: 16px;
+}
+
+.search-title{
+	font-size:23px;
+	font-weight:400;
+	height: 80px;
+	/* padding-top: 10px; */
+	display: table;
+}
+
+.search-title span {
+	color: black;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.star {
+	font-size: 1.5em;
+	/* padding-bottom: 15px; */
+	color: #ff2d60;
+	display: block;
+}
+
+.price-item {
+	display: inline-block;
+}
+
+.price-item i b{
+	font-weight: 600;
+}
+
+.price-item i small{
+ 	font-size: 14px;
+    color: #888;
+}
+
+.price-type{
+	display: block;
+}
+
+.price-reserve{
+	background-color: #ff2d60;
+	color:#fff;
+	font-size: 12px;
+	padding: 1px 4px 2px;
+}
+
+.price-part{	
+	font-size:22px;
+	vertical-align: middle;
+}
+
+.price-rab .price-type .won {
+	font-size:3px;
+}
+
+.won{
+	font-size:14px;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 601px) {
+	.box {
+		display: block;
+		float: none;
+		margin: 20px auto;
+		width: 70%;
+		position: relative;
+		border: 1px solid #ccc;
+	}
+
+}
+
+@media screen and (max-width: 600px) {
+	.calendar {
+		width: 100%;
+		height: 100px;
+		margin: 0 auto;
+		position: relative;
+		background-color: #404040;
+	}
+
+	.box {
+		float: left;
+		margin: 10px auto;
+		width: 100%;
+		position: relative;
+		border: 1px solid #ccc;
+	}
+}

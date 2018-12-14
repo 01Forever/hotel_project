@@ -1,0 +1,51 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<jsp:include page="../comm/head.jsp" />
+<jsp:include page="../comm/header.jsp" />
+<script type="text/javascript" src="js/toggle.js"></script>
+<meta charset="UTF-8">
+<title>차트페이지</title>
+<style>
+	.contents {
+		width: 100%;
+		text-align: center;
+	}
+	
+	.contents h3 {
+		font-size: 20px;
+		line-height: 40px;
+	}
+	
+	#left {
+		margin-top: 120px;
+	}
+	#right {
+		margin-bottom: 100px;
+	} 
+</style>
+</head>
+<body>
+	<jsp:include page="../comm/header.jsp" />
+	<div class="contents">
+		<div id="left">
+			<h3>●구 단위 호텔과 객실의 수</h3>
+			<iframe src="./chart/barChart.jsp" width="700px" height="450px" scrolling="no"></iframe>
+		</div>
+		<div id="center">
+			<h3>●월별 회원가입자 수</h3>
+			<iframe src="./chart/lineChart.jsp" width="700px"
+				height="450px" scrolling="no"></iframe>
+		</div>
+		<div id="right">
+			<h3>●시간별 예약 통계</h3>
+			<iframe src="./chart/donutChart.jsp" width="700px"
+				height="750px" scrolling="no"></iframe>
+		</div>
+	</div>
+	<jsp:include page="../comm/footer.jsp" />
+</body>
+</html>

@@ -1,0 +1,397 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<jsp:include page="../comm/head.jsp" />
+<meta charset="UTF-8">
+<title>이용 약관</title>
+<c:choose>
+	<c:when test="${param.category_num == 2}">
+	</c:when>
+</c:choose>
+<style>
+* {
+	margin: 0 auto;
+}
+
+.wrapper {
+	width: 100%%;
+	margin: 0 auto;
+}
+
+p, pre, h4, h1 {
+	line-height: 25px;
+}
+
+h1 {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+section {
+	box-sizing: border-box;
+	float: right;
+	width: 75%;
+	min-height: 500px;
+	padding: 1.5625%;
+}
+
+section img {
+	max-width: 100px;
+}
+
+aside {
+	line-height: 45px;
+	font-size: 20px;
+	box-sizing: border-box;
+	float: left;
+	width: 25%;
+	padding: 1.5625%;
+	margin-top: 50px;
+}
+
+aside ul {
+	float: right;
+	margin-right: 60px;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	color: #666666;
+	text-decoration: none;
+}
+
+footer {
+	clear: both;
+	background: #f7323f;;
+	font-size: 2em;
+}
+
+footer h3 {
+	font-size: 1.5rem;
+	padding: 30px;
+	color: white;
+	text-align: center;
+}
+
+.comm_table {
+	margin-top: 30px
+}
+
+.comm_table table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.comm_table table tbody {
+	border-top: 3px solid #525252;
+}
+
+.comm_table table tr.recond  div {
+	display: none;
+}
+
+.comm_table table th, .comm_table table td {
+	padding: 10px 10px;
+	border: 1px solid #ccc;
+	text-align: left;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.comm_table table th {
+	text-align: center;
+	background: #efefef
+}
+
+.comm_table table th:first-child, .comm_table table td:first-child {
+	border-left: none;
+	text-align: center;
+}
+
+.comm_table table th:last-child, .comm_table table td:last-child {
+	border-right: none;
+	text-align: center;
+}
+
+h4, h2 {
+	font-size: 18px;
+	font-weight: bold;
+}
+div.a_btn a {display: inline-block; padding-right:20px}
+p {
+	text-indent: -22px;
+    padding-left: 22px;
+}
+</style>
+
+</head>
+<script type="text/javascript">
+   $(function() {
+      $(".recond").each(function() {
+         $(this).find("a").click(function() {
+            $(this).next().slideToggle();
+         });
+      });
+   });
+</script>
+<body>
+	<div class="container">
+		<div class="wrapper">
+			<jsp:include page="../comm/header.jsp" />
+			<div class="box_s">
+			<section id="con">
+				<div class="a_btn">
+				<a href="terms.do">이용약관</a><a href="terms2.do"> 위치기반 서비스 이용약관</a> <a href="terms3.do" class="on-check">개인정보 처리방침</a>
+			</div> 
+				<br>
+				<hr>
+				<br>
+				<h1>요기죠기 개인정보 처리방법</h1>
+				<br> <br>
+				<p>주식회사 동현컴퍼니(이하 "회사")은 이용자의 개인정보를 소중하게 생각하며 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」과 
+「개인정보보호법」 등 개인정보 보호 법령을 준수하고자 노력하고 있습니다.
+
+회사는 개인정보 처리방침을 통해 이용자의 개인정보 처리를 포함한 회사의 개인정보 보호를 위한 조치 내용을 이용자에게 알리고, 회사와 이용자 간의 권리 및 
+의무관계를 규정하여 이용자의 개인정보 자기결정권을 보장합니다. 및 책임사항을 규정함을 목적으로 합니다.</p>
+				<br>
+				<p>본 개인정보 처리방침은 요기조기 서비스 웹 및 앱에 적용됩니다.</p>
+				<br> <br>
+				<h4>1. 개인정보 처리 및 보유 기간</h4>
+				<br>
+				<p>회사는 이용자의 개인정보를 아래의 목적으로만 이용하며, 목적이 변경될 경우에는 반드시 사전에 이용자에게 동의를
+					구하겠습니다.</p>
+				<br>
+				<div class="box">
+					<a href="#" title="개인정보란?" class="a-btn">▶ 개인정보란?</a>
+					<div class="a-btn-box">
+						<p>    - 생존하고 있는 개인에 관한 정보로서 성명, 이메일 등에 의하여 당해 개인을 알아볼 수 있는 부호, 문자, 음성, 음향, 영상 및 생체특성 등에 
+     관한 정보(당해 정보만으로는 특정 개인을 알아볼 수 없는 경우에도 다른 정보와 용이하게 결합하여 알아볼 수 있는 것을 포함합니다)를 말합니다.</p>
+					</div>
+				</div>
+				<div class="box">
+					<a href="#" title="개인정보 처리 정의" class="a-btn">▶ 개인정보 처리 정의</a>
+					<div class="a-btn-box">
+						<p>    - “개인정보의 처리”란 개인정보의 수집, 생성, 기록, 저장, 보유, 가공, 편집, 검색, 출력, 정정, 복구, 이용, 제공, 공개, 파기, 그 밖에 이와 유사한 행위를 의미합니다.</p>
+					</div>
+					<div class="box">
+						<a href="#" title="개인정보 처리 목적" class="a-btn">▶ 개인정보 처리 목적</a>
+						<div class="a-btn-box">
+							<p>  - 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산</p>
+							<p>  - 콘텐츠 제공, 구매 및 요금 결제, 이벤트 경품 배송 또는 청구지 등 발송, 금융거래 본인 인증 및 금융 서비스, 요금추심</p>
+							<p>  - 서비스 가입/변경/해지 처리, 이벤트 경품 배송, 본인확인, 개인식별, 가입의사확인, 고지사항전달, 서비스제공관련 안내, 명의도용 방지를 위한 등록된 이동전화로 가입사실 통보,
+    이용요금 고지 결제 및 추심, 이용관련 문의 불만 처리</p>
+							<p>  - 회원 관리를 위해 회원제 서비스 이용에 따른 본인확인, 개인 식별, 불량회원의 부정 이용 방지와 비인가 사용 방지, 가입 의사 확인, 불만처리 등 민원처리, 고지사항 전달</p>
+							<p>  - 마케팅 및 광고에 활용 동의한 회원에 한하여 광고, 이벤트, 프로모션 경품 시행 및 당첨회원에 대한 물품배송, 이벤트 당첨자 포인트(사이버 머니) 제공,
+    기타 신규 서비스 개발 및 특화 내용 광고성 정보 전달 시 활용</p>
+							<p>  - 기타 개인정보처리방침에 고지된 수탁자에게 서비스제공 등 계약의 이행에 필요한 업무의 위탁</p>
+						</div>
+					</div>
+				</div>
+				<br>
+				<p>회사는 이용목적에 맞게 최소한의 개인정보만을 수집하며, 이용자의 개인정보를 수집하는 경우에는 반드시 사전에 이용자에게 해당 사실을 알리고 동의를 구하겠습니다. 
+또한 이용자에게 동의 받거나 법령에서 정한 보유기간 내에서만 개인정보를 처리∙보유하겠습니다.</p>
+				<br>
+				<div class="box">
+					<a href="#" title="개인정보 수집 및 이용 등에 관한 동의방법" class="a-btn">▶
+						개인정보 수집 및 이용 등에 관한 동의방법</a>
+					<div class="a-btn-box">
+						<p>   - 전자적 방법(웹사이트 포함)으로 회원가입 또는 서비스 이용 시 동의내용 또는 요기죠기 홈페이지, 요기죠기 어플리케이션에 게시된 개인정보처리방침의 동의내용을
+     확인하신 후 동의버튼을 클릭하는 방법</p>
+						<p>   - 서비스 가입/이용/변경 신청서 등 청약내용에 첨부된 개인정보의 수집/이용 위탁 제공 동의의 세부 내용을 숙지하시고 서명하시는 방법</p>
+						<p>   - 고객행복센터 및 기타 전화 등을 통한 전화상담의 경우 상담원으로부터 직접 동의내용의 안내를 받으시거나, 상담원의 안내에 따라 요기죠기 홈페이지 또는 요기죠기 어플리케이션 
+     개인정보처리방침의 동의내용을 확인하신 후 전화상으로 본인이 동의 의사를 표시하는 방법</p>
+						<p>   - 우편, 전자우편 또는 팩스를 통해 안내된 동의서(동의내용)에 서명, 날인 후 제출하는 방법 등</p>
+					</div>
+				</div>
+				<br>
+				<p>■ 회사의 서비스 제공을 위하여 수집∙이용되는 이용자 개인정보</p>
+				<div style="background: url('images/terms3.JPG'); width: 670px; height: 705px; background-size: auto;"></div>
+				<br>
+				<p>다만, 다음의 경우는 예외로 하고 법령에 따라 동의 없이 개인정보를 수집·이용할 수 있습니다.</p>
+				<br>
+				<div class="box">
+					<a href="#" title="동의없이 수집·이용하는 예외 사항" class="a-btn">▶ 동의없이
+						수집·이용하는 예외 사항</a>
+					<div class="a-btn-box">
+						<p>    - 정보통신서비스의 제공에 관한 계약을 이행을 위하여 필요한 개인정보로서 경제적·기술적인 사유로 통상적인 동의를 받는 것이 뚜렷하게 곤란한 경우</p>
+						<p>    - 정보통신서비스의 제공에 따른 요금정산을 위하여 필요한 경우</p>
+						<p>    - 그 밖에 법률에 특별한 규정이 있는 경우</p>
+					</div>
+				</div>
+				<br>
+				<p>서비스 이용과정에서 쿠키(cookie)가 생성되어 수집될 수 있습니다.</p>
+				<p>회사는 이용자에게 개별적인 맞춤서비스를 제공하기 위하여 이용정보를 저장하고 수시로 불러오는 쿠키(cookie)를 사용합니다.</p>
+				<br>
+				<div class="box">
+					<a href="#" title="쿠키란" class="a-btn">▶ 쿠키란</a>
+					<div class="a-btn-box">
+						<p>     - 쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다.</p>
+						<p>     - 쿠키는 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 보안접속 여부 등을 파악하여 이용자에게 최적화된 정보를 제공하기 위하여 사용합니다.</p>
+					</div>
+				</div>
+				<div class="box">
+					<a href="#" title="쿠키 정보 수집 수준 선택 조정 방법" class="a-btn">▶ 쿠키 정보
+						수집 수준 선택 조정 방법</a>
+					<div class="a-btn-box">
+						<p>     - 아이폰은 [설정] – [Safari] – [쿠키 허용]에서 쿠키 사용여부를 선택하거나 [쿠키 데이터 지우기]를 선택하여 쿠키 데이터를 삭제하실 수 있습니다.</p>
+						<p>     - 아이폰 이외의 폰은 웹브라우저의 [설정] – [쿠키 허용]에서 쿠키 사용여부를 선택하거나 [모든 쿠키 데이터 지우기]를 선택하여 쿠키 데이터를 삭제하실 수 있습니다.</p>
+						<p>     - 위에 제시된 메뉴를 통해 쿠키가 저장될 때마다 확인을 하거나, 아니면 모든 쿠키의 저장을 거부할 수도 있습니다. 단, 이용자가 쿠키 설치를 거부하였을 경우 
+       서비스 제공에 어려움이 있을 수 있습니다.</p>
+						<p>     - 쿠키는 브라우저의 종료 시나 로그아웃 시 만료됩니다.</p>
+					</div>
+				</div>
+				<div class="box">
+					<a href="#" title="쿠키 설치운영 및 거부 방법" class="a-btn">▶ 쿠키 설치운영 및
+						거부 방법</a>
+					<div class="a-btn-box">
+						<p>     웹브라우저 상단의 도구>인터넷옵션>개인정보 메뉴의 옵션 설정을 통해 쿠키 저장을 거부할 수 있습니다. (쿠키 저장을 거부할 경우 맞춤형 서비스 이용에 어려움이 발생할 수 있습니다.)</p>
+
+						<p>     - Internet Explorer의 경우 웹 브라우저 상단의 “도구” 메뉴 > “인터넷 옵션” 메뉴 > “개인정보” 탭 > 직접 설정</p>
+						<p>     - Chrome의 경우 웹 브라우저 우측 상단의 아이콘 “” 선택 > “설정”선택 > 화면 하단의 “고급 설정 표시” 선택 >개인정보 섹션의 “콘텐츠 설정” 버튼 > 쿠키 섹션에서 직접 설정</p>
+					</div>
+				</div>
+				<br> <br>
+				<p>2. 개인정보 파기</p>
+				<br>
+				<p>회사는 최소한의 개인정보 수집·이용을 원칙으로 하고, 불필요한 개인정보를 선별하여 파기할 수 있도록 최선을 다할 것입니다.</p>
+				<p>서비스 해지 등 이용목적이 달성된 개인정보는 지체없이 파기하나, 이용목적이 달성된 후에도 내부 방침 및 기타 관련 법령에 
+의한 정보보호 사유에 따라 일정기간동안 보관 후 파기할 수 있습니다.</p>
+				<br>
+				<div class="box">
+					<a href="#" title="개인정보의 파기 대상" class="a-btn">▶ 개인정보의 파기 대상</a>
+					<div class="a-btn-box">
+						<p>     - 본인인증과 회원가입을 위한 회원정보</p>
+						<p>     - 예약과 결제, 취소, 환불, 문의 및 상담 등에 필요한 서비스 이용정보</p>
+						<p>     - 마케팅, 이벤트 등의 목적을 위하여 수집한 회원가입정보에 포함된 주소와 다른 별도의 배송지 정보</p>
+						<p>     - 그 외 보유기간 및 관련법령에 따른 보존기간이 종료된 개인정보 등</p>
+					</div>
+				</div>
+				<div class="box">
+					<a href="#" title="개인정보의 파기 절차와 방법 " class="a-btn">▶ 개인정보의 파기
+						절차와 방법</a>
+					<div class="a-btn-box">
+						<p>    - 회사는 이용자의 서비스 해지 등의 요청이 있는 경우 지체없이 파기하며, 관계법령 및 내부 방침에 의해 보유한 경우에도 해당 사유 종료 후 지체없이 파기합니다.</p>
+						<p>    - 회사는 파기 사유가 발생한 개인정보를 선정하고 회사의 개인정보 보호책임자의 승인을 받아 개인정보를 파기합니다.</p>
+						<p>    - 개인정보 파기방법은 전자적 파일 형태로 기록∙저장된 개인정보는 기록을 재생할 수 없도록 파기하며, 종이 문서에 기록∙저장된 개인정보는 분쇄하거나 소각하여 파기합니다.</p>
+					</div>
+				</div>
+				<div class="box">
+					<a href="#" title="내부 방침 및 관련 법령에 따라 보관후 파기하는 이용자 개인정보"
+						class="a-btn">▶ 내부 방침 및 관련 법령에 따라 보관후 파기하는 이용자 개인정보</a>
+					<div class="a-btn-box">
+						<p>    다음의 사유에 해당하는 경우에는 해당 사유 종료시까지 보관 후 파기합니다.</p>
+
+						<p>    - 회사와 이용자간 민원, 소송 등 분쟁 과정 중 법률로 정한 보유기간이 경과한 경우 : 분쟁 해결시까지 보관 후 파기</p>
+						<p>    - 회사가 개별적으로 이용자의 동의를 받은 경우 : 해당 동의 받은 기간까지 보관 후 파기</p>
+						<p>    - 정산이 남아 있는 경우 : 예약 정보를 정산 종료시까지 보관 후 파기</p>
+						<p>    - ‘개인정보 유효기간제’에 따라 1년간 서비스를 이용하지 않은 회원 : 별도 분리 보관 후 파기</p>
+						<p>    - 기타 관련 법령에 따라 보유하는 경우</p>
+						<div style="background: url('images/terms4.JPG'); width: 670px; height: 490px; background-size: auto;"></div>
+					</div>
+				</div>
+				<br>
+				
+					<p>3.개인정보 제공</p>
+				<br>
+					<p>회사는 원칙적으로 이용자 동의 없이 개인정보를 외부에 제공하지 않습니다.</p>
+					<p>다만 다양한 서비스 제공 및 품질 향상 등의 목적으로 최소한의 개인정보만 제공할 수 있으며, 개인정보를</p>
+					<p>제3자에게 제공해야 하는 경우에는 반드시 사전에 이용자에게 해당 사실을 알리고 동의를 받은 </p>
+					<p>내용만을 제공하겠습니다.
+				<br><br>
+				<p>■ 회사가 제3자에게 제공하는 이용자 개인정보</p>
+				<br>
+				<div style="background: url('images/terms5.JPG'); width: 670px; height: 240px; background-size: auto;"></div>
+				<p>다음의 경우는 예외로 하고, 이용자의 사전 동의없이 이용자 정보를 제공할 수 있습니다.</p>
+				<p>그러나 회사는 예외 사항의 경우에도 정보 제공 내용을 이용자에게 고지하는 것을 원칙으로 하며 본래 수집과 이용 목적에 반하여 무분별하게 제공되지 않도록 최대한 노력하겠습니다.</p>
+				<br>
+				<div class="box">
+					<a href="#" title="동의없이 제공하는 예외 사항" class="a-btn">▶ 동의없이 제공하는 예외 사항</a>
+					<div class="a-btn-box">
+						<p>    다음의 사유에 해당하는 경우에는 해당 사유 종료시까지 보관 후 파기합니다.</p>
+
+						<p>    - 회사와 이용자간 민원, 소송 등 분쟁 과정 중 법률로 정한 보유기간이 경과한 경우 : 분쟁 해결시까지 보관 후 파기</p>
+						<p>    - 회사가 개별적으로 이용자의 동의를 받은 경우 : 해당 동의 받은 기간까지 보관 후 파기</p>
+						<p>    - 정산이 남아 있는 경우 : 예약 정보를 정산 종료시까지 보관 후 파기</p>
+						<p>    - ‘개인정보 유효기간제’에 따라 1년간 서비스를 이용하지 않은 회원 : 별도 분리 보관 후 파기</p>
+						<p>    - 기타 관련 법령에 따라 보유하는 경우</p>
+						<div style="background: url('images/terms4.JPG'); width: 670px; height: 490px; background-size: auto;"></div>
+					</div>
+				</div>
+				<div class="box">
+					<a href="#" title="제공 동의 철회 요청" class="a-btn">▶ 제공 동의 철회 요청</a>
+					<div class="a-btn-box">
+						<p>    - 전화 : 1600-6250</p>
+						<p>    - 이메일 : darkdeck@naver.com</p>
+					</div>
+				</div>
+				<br>
+				<p>4. 개인정보 위탁</p>
+				<br>
+				<p>이용자에게 다양한 서비스를 제공하는 데에 반드시 필요한 업무 중 일부를 외부 업체로 하여금 수행하도록 개인정보를 위탁하고 있습니다. 
+회사는 위탁 받은 업체가 개인정보보호 관계 법령을 위반하지 않도록 관리·감독하고 있으며, 위탁업무의 내용이나 수탁자가 변경될 경우에는 
+지체없이 본 개인정보 처리방침을 통하여 공개하도록 하겠습니다.</p>
+				<br>
+				<p>■ 위탁하는 이용자 개인정보</p>
+				<br>
+				<div style="background: url('images/terms6.JPG'); width: 670px; height: 300px; background-size: auto;"></div>
+				<div class="box">
+					<a href="#" title="위탁에 대한 안전성 확보 및 관리감독에 관한 사항" class="a-btn">▶ 위탁에 대한 안전성 확보 및 관리감독에 관한 사항</a>
+					<div class="a-btn-box">
+						<p>    - 위탁계약 등을 통하여 서비스제공자의 개인정보보호 관련 지시엄수, 개인정보에 관한 비밀유지, 
+      제3자 제공의 금지 및 사고시의 책임부담, 위탁기간, 처리 종료 후의 개인정보의 반환 또는 파기 등을 명확히 
+      규정하고 당해 계약내용을 서면 등 전자적형태로 보관하겠습니다.</p>
+						<p>    - 회사는 위탁계약 체결시 위탁업무 수행 목적 외 개인정보 처리금지, 기술적관리적 보호조치, 재위탁제한, 수탁자에 대한 관리감독, 
+      손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.</p>
+					</div>
+				</div>
+				
+				
+				<div class="comm_table">
+					<table>
+						<colgroup>
+							<col style="width: 10%" />
+							<col>
+							<col style="width: 15%">
+						</colgroup>
+						<tr>
+
+						</tr>
+					</table>
+				</div>
+			</section>
+			<aside>
+				<ul>
+					<li><a href="boardList.do">공지사항</a></li>
+					<li><a href="eventboard.do">이벤트</a></li>
+					<li><a href="terms4.do">자주 묻는 질문</a></li>
+					<li><a href="inquiryBoardList.do">문의 사항</a></li>
+					<li><a href="terms.do" class="check">약관 및 정책</a></li>
+				</ul>
+			</aside>
+			</div>
+			<jsp:include page="../comm/footer.jsp" />
+		</div>
+	</div>
+	<script type="text/javascript">
+$(document).ready(function() {
+	$('.a-btn-box').css('display','none');
+});
+
+jQuery('.a-btn').click(function (e) {
+	e.preventDefault();
+	if($(this).next('.a-btn-box').is(':visible') == false){
+		$(this).next('.a-btn-box').slideDown(200);
+	} else {
+		$(this).next('.a-btn-box').slideUp(200);
+	}
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+	.container {width: 100%; padding:100px 0 0 0; margin:0 auto;}
+	.container:after {content: ''; display: block; width: 0px; height: 0px; clear: both;}
+	header {top: 0;width: 100%;position: fixed;z-index: 10000;background: #292929;}
+		div#header {width: 100%;margin: 0 auto;max-width: 1200px;text-align: right;}
+		div#header h1 {float:left;}
+		div#header h1 a {display: block}
+		div#header h1 a img {width: 100px;vertical-align: bottom;}
+		button.m_menu_btn {display: none;}
+		div#header nav {width:calc(100% - 150px);padding: 20px 0;display: inline-block;}
+		div#header nav:after {content: ''; width: 0px; height: 0px;  clear: both;}
+		div#header nav ul#other {display: inline-block;}
+		div#header nav ul#other > li {display: inline-block; position: relative; cursor: pointer;}
+		div#header nav ul#other > li > a {display: block; text-decoration: none; color: #fff; font-size: 17px; font-weight: 500;}
+		div#header nav ul#other > li > a:hover{ color:beige;}
+		div#header nav ul#other > li:last-child a {padding-right: 0px;}
+			ul.sub_menu {display: none; position: absolute; width: 170px; border-radius: 20px; left: -30px; background: #ccc; }
+			ul.sub_menu li {}
+			ul.sub_menu li a {display: block; color: #000; font-size: 14px; text-align:center; font-weight: 500; text-decoration: none; }
+		
+	footer {width: 100%;position: relative;}
+		div.footer {background-color: #292929;font-size: 13px;color: #aaa;margin-top: 100px;padding-top: 30px;}
+		div.footer-line {}
+		div.icon {text-align: center;display: block;float: left;padding-right: 29px;}
+		div.icon img{width: 110px;}
+		div.foot-address {height:200px; padding-top: 20px;}
+		div.address-list {float:left;width: calc(75% - 100px);height:200px;}
+			div.address-list p {line-height: 1.6em}		
+		div.Service-center {float:right;width: calc(20% - 25px);height:200px;}
+		div.Service-center p {line-height: 1.6em}
+			ul.foot-menu {border-bottom: 1px solid #333; padding-bottom: 10px; text-align: right;}
+			ul.foot-menu li {padding:0 20px; display: inline-block;}
+			ul.foot-menu li a {text-decoration: none; color: #9a9a9a }
+			ul.foot-menu li a:hover {color: #fff;} 
+
+	.menu_btn {color: #fff; font-size: 4em;}
+/* 각페이지마다 들어가야할 박스 사이즈 */
+	.box_s {display: block; width: calc(100% - 20px); margin: 0 auto; padding: 0px 10px;}
+/* 화면 해상도 width 960px 이상 Design --------------------------------------*/
+@media screen and (min-width: 960px){
+		div#header nav ul#other > li > a { padding: 20px 25px;}
+		div#header nav ul#other > li:last-child a {}
+			div#header nav ul#other > li:hover {}  
+			ul.sub_menu {padding-top: 15px; padding-bottom: 15px;}
+			ul.sub_menu li {}
+			ul.sub_menu li a {padding: 10px 5px;}
+	
+	/* 각페이지마다 들어가야할 박스 사이즈 */
+	.box_s {max-width: 1200px; width:100%; padding: 0px;}	
+}
+
+/* 화면 해상도 width 641px 이상 1024px 이하 Design --------------------------------------*/
+@media screen and (max-width: 1024px) and (min-width: 601px) {
+		div#header nav ul#other > li > a {padding: 25px 7px; font-size: 14px}
+		div#header nav ul#other > li:last-child a {padding-right: 10px}
+			div#header nav ul#other > li:hover {}  
+			ul.sub_menu {padding-top: 10px; padding-bottom: 10px;}
+			ul.sub_menu li {}
+			ul.sub_menu li a {padding: 10px 5px;}	
+}
+
+/* 화면 해상도 width 300px 이상  Design --------------------------------------*/
+@media screen and (max-width: 600px){
+	header {}
+		div#header {width: 100%;}
+		div#header h1 {float:left;width: 120px;}
+		button.m_menu_btn {display: block;float: right;border: 0px;background: none;margin-top: 17px;margin-right: 30px;}
+		div#header nav {float: none;overflow: hidden;width:100%;text-align: left;padding: 0px;}
+		div#header nav ul#other {display: none;}
+		div#header nav ul#other.on {display: block;}
+		div#header nav ul#other > li {display: block; position: relative; background: #ccc;}
+}
+

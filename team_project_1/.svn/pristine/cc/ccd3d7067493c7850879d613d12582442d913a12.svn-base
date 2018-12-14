@@ -1,0 +1,65 @@
+
+function paySubmit() {
+	$("#payFor").submit(); 
+}
+
+$(function() {
+	
+	$('#mileage').on("keyup", function() {
+		if($("#myMile").val() < $("#mileage").val()){
+			alert("시용할 수 있는 마일리지 범위를 초과하였습니다.");
+			if($("#myMile").val() == ""){
+				$("#mileage").val(0);
+			}else{
+				$("#mileage").val($("#myMile").val());
+			}
+		} 
+	})
+	
+	document.getElementById("myBtn").addEventListener("click", myFunction);
+	
+	function myFunction() {
+		
+		function nameCheck(str){
+			return (/^[가-힣]{2,4}$/).test(str);
+		}
+		
+	  function phoneCheck(str){
+			return (/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/).test(str);
+		}
+	  
+		$('#userName').val($('#userName').val().trim()); 
+		
+		  if(!nameCheck($('#userName').val()))
+		  {
+		   alert('이름을 확인하세요.(한글 2~4자 이내)');
+		   $('#userName').focus();
+		   document.getElementById('myModal').style.display = "none";
+		   return false;
+		  }
+		
+		  if (!phoneCheck($('#phone').val())) {
+		      alert("잘못된 휴대폰 번호입니다.");
+		      $('#phone').focus();
+		      document.getElementById('myModal').style.display = "none";
+		      return false;
+			}
+		  
+		  if(!$(':input:radio[name=pay]:checked').val()) {
+			    alert("결제 방법을 선택해주세요.");
+			    document.getElementById('myModal').style.display = "none";
+			    return false;
+			}
+		  
+		  if(!$("#terms").prop("checked")){
+			  	alert("취소 약관에 동의해주세요.");
+			  	document.getElementById('myModal').style.display = "none";
+			    return false;
+			}
+			
+		  
+		}
+	});
+
+
+

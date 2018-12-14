@@ -1,0 +1,198 @@
+@charset "UTF-8";
+
+.table_area1 table {width: 100%;border-top: 2px solid #f8585b;border-bottom: 1px solid #b6b6b6;font-family: '돋움', Dotum, Helvetica, 'Apple SD Gothic Neo', Sans-serif;}
+.table_area1 table thead th {padding: 15px 0px; border-top: 1px solid #d6d7d9; border-bottom: 1px solid #d6d7d9; font-family: 'Nanum Gothic', 'NanumGothic', '나눔고딕'; font-size: 13px; font-weight: bold; color: #4d4d4d; text-align: center; vertical-align: middle; background-color: #e8ecf5;}
+.table_area1 table thead th.first {border-left: 0;}
+.table_area1 table thead th.last {border-right: 0;}
+.table_area1 table thead th.borderl {border-left: 1px solid #dddddd;}
+.table_area1 table thead th.borderr {border-right: 1px solid #dddddd;}
+.table_area1 table thead th.alignl {padding-left: 10px; text-align: left;}
+.table_area1 table thead th.alignr {text-align: right;}
+.table_area1 table tbody th {border-top: 1px solid #dddddd;font-family: 'Nanum Gothic', 'NanumGothic', '나눔고딕';font-size: 13px;font-weight: bold;color: #4d4d4d;text-align: center;background-color: #fffafa;padding: 7px 5px;} 
+.table_area1 table tbody th.borderl {border-left: 1px solid #dddddd;}
+.table_area1 table tbody th.borderr {border-right: 1px solid #dddddd;}
+.table_area1 table tbody td {padding: 6px 5px;border-top: 1px solid #d7d7d7;border-bottom: 1px solid #d7d7d7;font-size: 12px;color: #626262;text-align: center;line-height: 1.4em;vertical-align: middle;}
+.table_area1 table tbody td.first {border-left: 0;}
+.table_area1 table tbody td.last {border-right: 0;}
+.table_area1 table tbody td.bg {background-color: #f5fbfc;}
+.table_area1 table tbody th.alignl, 
+.table_area1 table tbody td.alignl {padding-left: 10px; text-align: left;}
+.table_area1 table tbody th.alignr, 
+.table_area1 table tbody td.alignr {text-align: right;}
+.table_area1 table tbody td.subject {table-layout: fixed; overflow: hidden; color: #333333; text-align: left; text-overflow: ellipsis; white-space: nowrap;}
+.table_area1 table tbody td.subject a {vertical-align: middle;}
+.table_area1 table tbody td a {color: #626262; text-decoration: none;}
+.table_area1 table tbody td a:hover {text-decoration: underline;}
+.table_area1 table tbody tr td.bg_gray {background-color: #f7f7f7;}
+.table_area1 table tbody tr.inactive td {text-decoration: line-through; color: #858585; background-color: #ececec;}
+.table_area1 table tbody tr td.nopadding {padding: 0px;}
+.table_area1 table tbody tr.bg td {background-color: #f7f7f7;}
+.table_area1 table tbody tr td.borderl {border-left: 1px solid #dddddd;}
+.table_area1 table tbody tr td.nobordert {border-top: 0;}
+.table_area1 table tbody tr td.noborderb {border-bottom: 0;}
+.table_area1 table tbody tr td img {display: inline; display: inline-block; vertical-align: middle;}
+.table_area1 table tbody tr td.imgs img {width: 20%;}
+.table_area1 table tbody tr td.imgm img {width: 40%;}
+.table_area1 table tbody tr td.imgl img {width: 60%;}
+.table_area1 table tfoot th {padding: 8px 0px; border-top: 2px solid #c4ebfb; border-bottom: 1px solid #b2b2b2; border-left: 0; border-right: 0; font-size: 1.05em; color: #333333; background-color: #e6f8ff;}
+.table_area1 table tfoot td {padding: 8px 5px; border-top: 2px solid #c4ebfb; border-bottom: 1px solid #b2b2b2; border-left: 0; border-right: 0; font-size: 1.05em; font-weight: bold; color: #333333; text-align: center; background-color: #e6f8ff;}
+.table_area1 table tfoot td.bg {background-color: #ffffff;}
+
+.table_area1 table thead th.bg_group {background-color: #effaff;}
+.table_area1 table tbody tr td.bg_group {background-color: #effaff;}
+.table_area1 table tbody td.reply {padding-left: 44px; background: url("../images/icon/icon_reply.png") no-repeat 12px 10px;}
+
+/* 
+ * 버튼
+ * 목록 : list
+ * 저장, 수정, 등록, 추가 : save
+ * 취소, 삭제 : cancel
+ */
+.btn_area {margin-top: 30px; text-align: right;}
+.btn_area_center {margin-top: 30px; text-align: center;}
+.btn {cursor: pointer;}
+button.btn.list,
+button.btn.save,
+button.btn.cancel {
+	/* height: 36px; */
+	min-width: 140px;
+	font-family: 'Nanum Gothic', 'NanumGothic', '나눔고딕', Helvetica, 'Apple SD Gothic Neo', Sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	padding: 0px 20px;
+	line-height: 3em;
+	border-radius: 5px;
+	}
+a.btn.list,
+a.btn.save,
+a.btn.cancel {
+   width: 104px; height: 34px; font-family: 'Nanum Gothic', 'NanumGothic', '나눔고딕', Helvetica, 'Apple SD Gothic Neo', Sans-serif; font-size: 13px; font-weight: bold; line-height: 34px;
+   border-radius: 0px;
+   -webkit-border-radius: 0px;
+   -moz-border-radius: 0px;
+   }
+.btn.list {border: 1px solid #cccccc;color: #515151;text-align: center;background-color: #fafafa;}
+.btn.save {border: 1px solid #f8585b;color: #ffffff;text-align: center;background-color: #f8585b;}
+.btn.cancel {border: 1px solid #939292;color: #ffffff;text-align: center;background-color: #939292;}
+button:hover.btn.list,
+button:hover.btn.save,
+button:hover.btn.cancel,
+a:hover.btn.list,
+a:hover.btn.save,
+a:hover.btn.cancel {color: #ffffff;}
+button:hover.btn.list,
+a:hover.btn.list {color: #515151;}
+
+/*
+ * sub(title)
+ */
+h3.sub_title {padding-top: 70px;padding-bottom: 20px;line-height: 1.6em;font-size: 21px;font-weight: 700;color: #414141;font-family: 'Nanum Gothic', 'NanumGothic', '나눔고딕', Helvetica, 'Apple SD Gothic Neo', Sans-serif;}
+
+/*
+ * input
+ */
+.table_area1 table select {min-width: 100px; height: 29px; border: 1px solid #969696; text-align: left; text-indent: 1px;}
+.table_area1 table input {display: inline-block; display: inline; vertical-align: middle;}
+.table_area1 table input[type=text] {height: 27px; font-size: 0.94em; text-indent: 2px; line-height: 27px; text-align: left;}
+.table_area1 table input {height: 27px; font-size: 0.94em; text-indent: 2px; line-height: 27px; text-align: left;}
+.table_area1 table input[type=text].alignc {text-align: center;}
+
+#emailPermissionText {display: none; padding: 20px 0px;}
+.point_red {color: red;}
+
+
+/*
+ * paging
+ */
+.paging_area {overflow: hidden; width: 100%; margin: 15px 0; padding: 0; font-size: 0.88em; font-weight: bold; text-align: center;}
+    .paging_area strong {display: inline-block; height: 22px; padding: 0 8px; border: 1px solid #137dbf; font-weight: bold; color: #ffffff; line-height: 23px; vertical-align: top; background-color: #0066cc;}
+    .paging_area a {display: inline-block;height: 24px;padding: 0 6px 0;line-height: 24px;color: #929292;border: none;text-decoration: none;}  
+    .paging_area a:hover {text-decoration: underline;color: #f8585b;}
+    .paging_area a.stimg {display: inline-block; padding: 0; border: 0; text-decoration: none;}
+    .paging_area a.stimg img {display: inline-block; height: 24px; border: 0; text-decoration: none; vertical-align: top;}
+    .paging_area a.stimg:hover {text-decoration: none;}
+	.active {font-weight: bold;}
+	.active a { color: #f8585b; }
+/*
+ * join 회원가입
+ */
+.join table {max-width: 800px; width: 100%; margin: 0 auto; border-collapse: collapse;}
+.join table caption {text-indent: -999999999999px; height: 0px; width: 0px;}
+.join table th {padding: 5px 5px; height: 57px; line-height: 1.6em; text-align: right; font-size: 15px;color: #292929;font-family: 'Nanum Gothic', sans-serif;font-weight: 700;}
+.join table td {padding: 5px 5px 5px 5px; font-size: 13px; line-height: 1.6em;color: #292929;font-family: 'Nanum Gothic', sans-serif;}
+.join table td input {display : block; line-height: 1.8em; padding-left: 10px;  width: calc(85% - 10px ); margin: 0 auto; border: none; border-bottom: 1px solid #a9a9a9;}
+.join table .btn.check {font-size: 13px; line-height: 1.6em; min-width: auto; padding: 4px 16px; font-weight: 400; border-radius: 5px; border: 1px solid #f8585b; color: #f8585b; text-align: center; background-color: #ffffff;}
+.join table .btn.check:hover {border: 1px solid #f85858; color: #fff; background-color: #f85858;}
+.join table .btn.check2 {font-size: 13px; line-height: 1.6em; min-width: auto; padding: 4px 16px; font-weight: 400; border-radius: 5px; border: 1px solid #f8585b; color: #f8585b; text-align: center; background-color: #ffffff;}
+.join table .btn.check2:hover {border: 1px solid #f85858; color: #fff; background-color: #f85858;}
+#pwdResult , #pwdResult {padding: 10px; padding-left: 50px;}
+
+/*
+ * login (로그인)
+ */
+.login-box-css.container {width: 100%;padding: 0;margin: 0;}
+.login-box-css.content{text-align: center; padding: 200px 0 100px 0;margin: 0 auto;}
+.login-box-css .submenu li a:hover {background: #ccc;border-radius: 3px;}
+.login-box-css #title {font-size: 2em;padding: 200px 0 50px 0;}
+.login-box-css #input input {margin: 30px auto;font-size: 14px;display: block;width: 300px;height: 30px;padding: 16px 13px;color: #999999;border: 1px solid #d9d9d9;background: transparent;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;}
+.login-box-css #button button {border-radius: 5px;width: 150px;background-color: #f8585b;border: none;color: #fff;padding: 15px 0;text-align: center;text-decoration: none;display: inline-block;font-size: 15px;margin: 4px 0px;cursor: pointer;}
+.login-box-css .login_button{margin: 0 auto; width: 313px;}
+.login-box-css #button .login_button button{width:100%}
+.login-box-css .button_tab2 {margin: 0 auto; width: 313px;}
+.login-box-css #button button {width: calc(50% - 4px);}
+	.login-box-css .button_tab2 button {float: left;}
+	.login-box-css .button_tab2 button:nth-child(2) {float: right}
+	.login-box-css .button_tab2:after {content: ''; width: 0px; height: 0px; clear: both; display: block;}
+
+/*
+ * terms (이용약관)
+ */
+.terms.container {width: 100%;padding: 0;margin: 0;}
+.terms .content {line-height: 1.5;width: 50%;padding: 150px 0 100px 0;margin: 0 auto;}
+.terms #title {text-align: center;font-size: 2em;padding: 30px;}
+.terms #allAgree {text-align: center;}
+.terms label {display: block;padding: 20px 0;}
+.terms input {width: 20px;}
+.terms .terms {border: 1px solid #eee;width: 100%;height: 200px;margin-bottom: 20px;overflow-x: hidden; overflow-y: auto;}
+.terms #next {text-align: center;padding: 30px 0;}
+.terms #next button {border-radius: 5px;width: 50%;background-color: #f8585b;border: none;color: #fff;padding: 15px 0;text-align: center;text-decoration: none;display: inline-block;font-size: 15px;margin: 4px;cursor: pointer;}
+
+/*
+ * modify (회원수정)
+ */
+.modify.container {width: 100%;padding: 0;margin: 0;}
+.modify .member_table {text-align: justify;width: 50%;padding: 150px 0;margin: 0 auto;}
+.modify h2 {text-align: center; padding: 30px 0 50px 0; font-weight: 600; }
+.modify table {margin: 0 auto;}
+.modify table th td {display: block;}
+.modify table tr th {padding: 5px 5px; height: 57px; line-height: 1.6em; text-align: right; font-size: 15px; color: #292929; font-family: 'Nanum Gothic', sans-serif; font-weight: 700;}
+.modify .point {color:red;}
+.modify table input {margin: 30px auto;font-size: 14px;width: 300px;height: 30px;padding: 5px 13px;color: #999999;border:none;border-bottom: 1px solid #d9d9d9;background: transparent;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;}
+.modify .button_area {margin-top: 35px;text-align: center;}
+.modify .button_areas button {border-radius: 5px; width: 150px; border: none;color: #fff;/*padding: 15px 0;*/text-align: center;text-decoration: none;display: inline-block;font-size: 15px;margin: 10px;cursor: pointer;}
+
+
+/* 화면 해상도 width 960px 이상 Design --------------------------------------*/
+@media screen and (min-width: 960px){
+}
+
+/* 화면 해상도 width 641px 이상 1024px 이하 Design --------------------------------------*/
+@media screen and (max-width: 959px) and (min-width: 601px) {
+}
+
+/* 화면 해상도 width 300px 이상  Design --------------------------------------*/
+@media screen and (max-width: 600px){
+
+}
+
+
+
+
+
+
+
+
+

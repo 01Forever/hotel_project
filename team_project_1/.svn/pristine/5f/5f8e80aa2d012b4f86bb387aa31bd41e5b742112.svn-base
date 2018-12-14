@@ -1,0 +1,129 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메인</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+<style>
+*{ margin: 0 auto; }
+.wrapper {
+	width: 96%;
+	margin:0 auto;
+}
+
+header {
+	background: black;
+	color: white;
+}
+header  h1 {
+	
+	padding : 30px;
+	color: white;	
+	text-align: left;
+}
+p {
+	text-align: right;
+}
+section {
+	box-sizing: border-box;
+  	float: right;
+	width: 75%;
+	border: 1px solid black;
+	min-height: 500px;
+	padding: 1.5625%;
+}
+section img {
+	max-width: 100px;
+}
+aside {
+	box-sizing: border-box;
+	float: left;
+	width: 25%;
+	border: 1px solid black;
+	min-height: 500px;
+	padding: 1.5625%;
+}
+ul{
+	list-style: none;
+	
+}
+a{
+	color: black;
+	text-decoration: none;
+}
+footer {
+	clear: both;
+	background: black;
+	font-size: 2em;
+}
+footer h3 {
+	font-size: 1.5rem;
+	padding : 30px;
+	color: white;	
+	text-align: center;
+}
+
+.comm_table {margin-top: 30px}
+.comm_table table {width: 100%; border-collapse: collapse;}
+.comm_table table tbody {border-top: 3px solid #525252;}
+.comm_table table th,
+.comm_table table td {padding: 10px 10px; border: 1px solid #ccc; text-align: left; font-size: 14px; line-height: 1.5; }
+.comm_table table th {text-align: center; background: #efefef}
+.comm_table table th:first-child,
+.comm_table table td:first-child {border-left: none; text-align: center;} 
+.comm_table table th:last-child,
+.comm_table table td:last-child {border-right: none; text-align: center;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+	<header>
+		<h1>요기조기</h1>
+		<h3>더보기</h3>
+		<P>내주변 예약내역 더보기 로그인<P>
+	</header>
+	<section>
+		<h2>서비스 공지사항</h2>
+		<p><a href="#"> 글쓰기</a></p>
+		<hr>
+		<div class="comm_table">
+			<table>
+				<colgroup>
+					<col style="width: 10%"/>
+					<col>
+					<col style="width: 15%">
+				</colgroup>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성일</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>제목들이다</td>
+					<td>2018-09-20</td>
+				</tr>
+			</table>
+		</div>
+	</section>
+	<aside>
+		<ul>
+			<li><a href="#">공지사항</a></li>
+			<li><a href="#">이벤트</a></li>
+			<li><a href="#">혁신 프로젝트</a></li>
+			<li><a href="#">자주 묻는 질문</a></li>
+			<li><a href="#">1:1 문의</a></li>
+			<li><a href="#">약관 및 정책</a></li>
+		</ul>
+	</aside>
+	<footer>
+		<h3>푸터</h3>
+	</footer>
+</div>
+</body>
+</html>

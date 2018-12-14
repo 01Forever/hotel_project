@@ -1,0 +1,54 @@
+package xyz.for01.controller;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import xyz.for01.dao.Email;
+
+@WebServlet("/emailPermission")
+public class EmailPermissionServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+
+		String email = "";
+
+		email = request.getParameter("emailId").toString();
+		Random rnd = new Random();
+		StringBuffer buf = new StringBuffer();
+		for (int i = 0; i < 5; i++) {
+			// rnd.nextBoolean() 는 랜덤으로 true, false 를 리턴. true일 시 랜덤 한 소문자를, false 일 시 랜덤 한
+			// 숫자를 StringBuffer 에 append 한다.
+			if (rnd.nextBoolean()) {
+				buf.append((char) ((int) (rnd.nextInt(26)) + 97));
+			} else {
+				buf.append((rnd.nextInt(10)));
+			}
+		}
+		String key = buf.toString();
+		resultMap.put("result", key);
+		Email.emailSend(key, email);
+		String json = new Gson().toJson(resultMap);
+
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(json);
+	}
+}

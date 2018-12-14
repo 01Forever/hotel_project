@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+footer {
+	background: black;
+	width: 100%;
+}
+	
+footer p {
+	font-size: 1.2em;
+	text-align: center;
+	color: white;
+	line-height: 200px;
+}

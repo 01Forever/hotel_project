@@ -1,0 +1,83 @@
+package xyz.for01.controller.hotel;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import xyz.for01.dao.HotelDAO;
+import xyz.for01.hotelvo.HotelVo;
+import xyz.for01.hotelvo.RoomImgVo;
+
+@WebServlet("/hotelDetailPage")
+public class HotelDetailServlet extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String hotelNo = req.getParameter("hotelNo");
+		String res_Start = req.getParameter("res_Start");
+		String res_End = req.getParameter("res_End");
+		HotelDAO hDao = HotelDAO.getInstance();
+		HotelVo hVo = hDao.hotelDetail(res_Start, Integer.parseInt(hotelNo));
+		
+		
+		JsonArray rooms = null;
+		JsonObject object = new JsonObject();
+		
+		for(int i=0; i < hVo.getRooms().size(); i++) {
+			rooms = new JsonArray();
+			JsonArray roomImg = null;
+			for(int j=0; j < hVo.getRooms().get(i).getImgs().size(); j++) {
+				roomImg = new JsonArray();
+				List<RoomImgVo> imgs = hVo.getRooms().get(i).getImgs();
+				
+
+				JsonObject imgsObject = new JsonObject();
+				imgsObject.addProperty("image", imgs.get(j).getImage());
+				imgsObject.addProperty("origin_img", imgs.get(j).getOrigin_img());
+				roomImg.add(imgsObject);
+					
+			}
+			
+			JsonObject roomsObject = new JsonObject();
+			roomsObject.addProperty("roomNo", hVo.getRooms().get(i).getRoomNo());
+			roomsObject.addProperty("roomName", hVo.getRooms().get(i).getRoomName());
+			roomsObject.addProperty("price", hVo.getRooms().get(i).getPrice());
+			roomsObject.addProperty("content", hVo.getRooms().get(i).getContent());
+			roomsObject.addProperty("maxroom", hVo.getRooms().get(i).getMaxRoom());
+			roomsObject.addProperty("count", hVo.getRooms().get(i).getContent());
+			roomsObject.add("imgs", roomImg);
+			rooms.add(roomsObject);
+		}
+		
+		/*object.add("hotelNo", value);
+		object.add("hotelName", value);
+		object.add("star", value);
+		object.add("hotelNo", value);
+		object.add("hotelNo", value);*/
+		
+		
+		
+		
+		req.setAttribute("myHotel", hVo);
+		req.setAttribute("start", res_Start);
+		req.setAttribute("end", res_End);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("hotel/hotelDetail.jsp");
+		dispatcher.forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
+	
+}

@@ -1,0 +1,110 @@
+package xyz.for01.boardvo;
+
+import java.util.Date;
+
+public class ReviewBoardVo {
+	private int num;
+	private String title;
+	private String start;
+	private String nic;
+	private String room;
+	private String content;
+	private String pictureurl;
+	private String media;
+	private Date writedate;
+
+	public ReviewBoardVo() { }
+	
+	public ReviewBoardVo(int num, String title, String start, String nic, String room, String content, String pictureurl,
+			String media, Date writedate) {
+		super();
+		this.num = num;
+		this.title = title;
+		this.start = start;
+		this.nic = nic;
+		this.room = room;
+		this.content = content;
+		this.pictureurl = pictureurl;
+		this.media = media;
+		this.writedate = writedate;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getStart() {
+		return start;
+	}
+
+	public void setStart(String start) {
+		this.start = start;
+	}
+
+	public String getNic() {
+		return nic;
+	}
+
+	public void setNic(String nic) {
+		this.nic = nic;
+	}
+
+	public String getRoom() {
+		return room;
+	}
+
+	public void setRoom(String room) {
+		this.room = room;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getPictureurl() {
+		return pictureurl;
+	}
+
+	public void setPictureurl(String pictureurl) {
+		this.pictureurl = pictureurl;
+	}
+
+	public String getMedia() {
+		return media;
+	}
+
+	public void setMedia(String media) {
+		this.media = media;
+	}
+
+	public Date getWritedate() {
+		return writedate;
+	}
+
+	public void setWritedate(Date writedate) {
+		this.writedate = writedate;
+	}
+
+	@Override
+	public String toString() {
+		return "ReviewBoard [num=" + num + ", title=" + title + ", start=" + start + ", nic=" + nic + ", room=" + room
+				+ ", content=" + content + ", pictureurl=" + pictureurl + ", media=" + media + ", writedate="
+				+ writedate + "]";
+	}
+}

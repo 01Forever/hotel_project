@@ -1,0 +1,123 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<jsp:include page="./comm/head.jsp" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>검색</title>
+<link rel="stylesheet" type="text/css" href="css/search.css">
+<script src="js/view.js"></script>
+</head>
+<body>
+	<jsp:include page="./comm/header.jsp" />
+	<div id="container">
+		<div id="content">
+			<div class="menu">
+				<div class="calendar">
+					<div class="check-tab">
+						<span id="check-in">체크인</span> 
+						<span id="check-out">체크아웃</span>
+					</div>
+					<div class="calendar-head">
+						<div class="start">
+							<label> 
+								<input type="text" name="res_Start" id="res_Start" class="datepicker" value="${param.res_Start}">
+							</label>
+							<hr>
+						</div>
+						<div class="last">
+							<label> 
+								<input type="text" name="res_End" id="res_End" class="datepicker" value="${param.res_End}">
+							</label>
+							<hr>
+						</div>
+					</div>
+				</div>
+				<div class="category">
+					<div class="category-tab">
+						<ul>
+							<li><a href="#">#모텔</a></li>
+							<li><a href="#">#호텔</a></li>
+							<li><a href="#">#추천순</a></li>
+							<li><a href="#">#후기많은 순</a></li>
+							<li><a href="#">#낮은 가격순</a></li>
+							<li><a href="#">#높은 가격순</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<hr class="menu-bottom">
+			<div class="main">
+				<ul>
+					<c:forEach items="${list}" var="hotel">
+						<li>
+							<div class="box">
+								<a href="hotelDetailPage?res_Start=${param.res_Start}&res_End=${param.res_End}&hotelNo=${hotel.hotelNo}">
+									<div class="image-box" style="background: url('images/hotel4.jpg'); background-size: cover;"></div>
+									<div class="infor">
+										<div class="search-title">
+											<p>${hotel.hotelName}<p>
+										</div>
+								</a>
+								<div class="star">
+									<c:choose>
+										<c:when test="${hotel.star == '0'}">
+											<span>☆☆☆☆☆</span>
+										</c:when>
+										<c:when test="${hotel.star == '1'}">
+											<span>★☆☆☆☆</span>
+										</c:when>
+										<c:when test="${hotel.star == '2' }">
+											<span>★★☆☆☆</span>
+										</c:when>
+										<c:when test="${hotel.star == '3' }">
+											<span>★★★☆☆</span>
+										</c:when>
+										<c:when test="${hotel.star == '4' }">
+											<span>★★★★☆</span>
+										</c:when>
+										<c:otherwise>
+											<span>★★★★★</span>
+										</c:otherwise>
+									</c:choose>
+								</div>
+								<div class="price-rab">
+									<div class="price-item">
+										<i class="price-type"> 
+											<b>대실</b> 
+											<small>최대 6시간</small>
+										</i> 
+										<span> 
+											<i class="price-reserve">예약가</i> 
+											<span>
+												<em class="price-part"></em>
+												<i class="won"></i>
+											</span>
+										</span>
+										<div class="price-item">
+											<i class="price-type"> 
+												<b>숙박</b> 
+												<small>숙소에 문의</small>
+											</i> 
+												<span> 
+													<i class="price-reserve">예약가</i> 
+													<span>
+													<em class="price-part">${hotel.price}</em>
+													<i class="won">원</i>
+													</span>
+												</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<jsp:include page="./comm/footer.jsp" />
+</body>
+</html>

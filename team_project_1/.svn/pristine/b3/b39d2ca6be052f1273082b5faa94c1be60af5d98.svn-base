@@ -1,0 +1,95 @@
+package com.dhk.test;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import javafx.scene.chart.Chart;
+import xyz.for01.conn.Conn;
+
+public class ChartDao {
+	private ChartDao() {
+	}
+
+	private static ChartDao instance = new ChartDao();
+
+	public static ChartDao getInstance() {
+		return instance;
+	}
+
+	public String chart() {
+		String sql = "select count(*), borugh from hotel group by borugh";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		JsonArray array = null;
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			array = new JsonArray();
+			while (rs.next()) {
+				JsonObject object = new JsonObject();
+				object.addProperty("count", rs.getInt(1));
+				object.addProperty("borugh", rs.getString(2));
+				array.add(object);
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return array.toString();
+	}
+
+	public String chartJoindate() {
+		String sql = "select count(*), TO_CHAR(JOINDATE, 'MM-DD') from member group by TO_CHAR(JOINDATE, 'MM-DD')";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		JsonArray array = null;
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			array = new JsonArray();
+			while (rs.next()) {
+				JsonObject object = new JsonObject();
+				object.addProperty("count", rs.getInt(1));
+				object.addProperty("joindate", rs.getString(2));
+				array.add(object);
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return array.toString();
+	}
+		
+	}
+

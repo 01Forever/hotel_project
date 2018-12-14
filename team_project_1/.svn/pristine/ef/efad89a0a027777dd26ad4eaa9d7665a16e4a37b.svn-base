@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+* {
+	text-decoration: none;
+	list-style: none;
+	margin: 0; 
+	padding: 0; 
+}
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+h1 { 
+	font-size: 3em;
+	padding: 20px;
+	display: inline;
+}
+	
+nav {
+	list-style: none;
+	background-color: black;
+	color: white;
+	height: 70px;		
+}
+
+nav ul {	
+	float: right;
+}
+
+nav ul li {
+	padding: 20px;
+	display: inline-block;
+}
+
+#menu{
+	position: fixed;
+	width: 100%;
+	z-index: 10000;
+}
+
+#menu li ul {
+	background: black;
+	position: absolute;
+	width: 150px;
+	display: none;  
+}		
+
+a {
+	text-decoration: none;
+}
+
+a:link, a:visited {
+	color: blue;
+}
+
+a:active {
+	color: yellow;
+}

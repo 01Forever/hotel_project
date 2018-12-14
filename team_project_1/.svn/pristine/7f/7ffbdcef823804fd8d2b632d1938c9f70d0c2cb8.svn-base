@@ -1,0 +1,73 @@
+<%@page import="com.google.gson.JsonObject"%>
+<%@page import="com.google.gson.JsonArray"%>
+<%@page import="xyz.for01.conn.Conn"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%
+	  String res_Start = request.getParameter("res_Start");
+	  String res_End = request.getParameter("res_End");
+      String sql = "SELECT HOTELNO, HOTELNAME, ADDRESS, WTMX, WTMY, G.NAME GRADE, DESCRIPT, "
+    	        + "(SELECT AVG(B.STAR) "
+    	        + "FROM ROOM R JOIN REVIEW_BOARD B ON R.ROOMNO = B.ROOMNO "
+    	        + "WHERE R.HOTELNO = M.HOTELNO GROUP BY R.HOTELNO) STAR "
+    	        + "FROM ( "
+    	        + "SELECT H.HOTELNO, HOTELNAME, ADDRESS, WTMX, WTMY, GRADE, DESCRIPT, MAXROOM, NVL(COUNT,0) COUNT "
+    	        + "FROM HOTEL H JOIN ( "
+    	        + "SELECT HOTELNO, SUM(MAXROOM) MAXROOM, SUM(COUNT) COUNT "
+    	        + "FROM ROOM R JOIN ( "
+    	        + "SELECT ROOMNO, COUNT(ROOMNO) COUNT " 
+    	        + "FROM RESERVATION "
+    	        + "WHERE RES_END > TO_DATE(?, 'YY/MM/DD') "
+    	        + "AND RES_END - TO_DATE(?,'YY/MM/DD') > 0 "
+    	        + "AND RESSTAT IN(0,1)"
+    	        + "GROUP BY ROOMNO) V " 
+    	        + "ON R.ROOMNO = V.ROOMNO(+) "
+    	        + "GROUP BY HOTELNO) T "
+    	        + "ON H.HOTELNO = T.HOTELNO) M JOIN HOTELGRADE G ON M.GRADE = G.SORTORDER "
+    	        + "WHERE MAXROOM > COUNT";
+    	        
+      Connection conn = Conn.getConnection();
+      java.sql.PreparedStatement pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, res_Start);
+      pstmt.setString(2, res_Start);
+      java.sql.ResultSet rs = pstmt.executeQuery();
+      int hotelNo = 0;
+      String hotelName = null;
+      String address = null;
+      String wtmX = null;
+      String wtmY = null;
+	  String grade = null;
+	  String descript = null;
+	  int star = 0;
+      List<String> list = new ArrayList<String>();
+      
+      JsonArray array = new JsonArray();
+      while (rs.next()) {
+    	 hotelNo = rs.getInt("hotelno");
+         hotelName = rs.getString("hotelname");
+         address = rs.getString("address");
+         wtmX = rs.getString("wtmx");
+         wtmY = rs.getString("wtmy");
+         grade = rs.getString("grade");
+         descript = rs.getString("descript");
+         star = rs.getInt("star");
+         
+         JsonObject object = new JsonObject();
+         object.addProperty("hotelNo", hotelNo);
+         object.addProperty("hotelName", hotelName);
+         object.addProperty("address", address);
+         object.addProperty("wtmX", wtmX);
+         object.addProperty("wtmY", wtmY);
+         object.addProperty("grade", grade);
+         object.addProperty("descript", descript);
+         object.addProperty("star", star);
+         array.add(object);
+      }
+      out.println(array.toString());  
+      conn.close();
+      pstmt.close();
+      rs.close();
+%>

@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+#wrap {
+	width: 971px;
+	margin: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+h1 {
+	color:  #0c142b;
+}
+table {
+	whidth : 100%;
+	border-collapse: collapse;
+	font-size: 12px;
+	line-height: 24px;
+}
+table td, th{
+	border: #d3d3d3 solid 1px;
+	padding: 5px;
+}
+th {
+	color: white;
+	size=20;
+	background: #0c142b;
+}
+img {
+	width: 220px;
+	height: 300px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+a:HOVER{
+	text-decoration: underline;
+	color:  #f7323f;
+}
+.button-box input{
+	border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    padding: 6px 20px;
+}

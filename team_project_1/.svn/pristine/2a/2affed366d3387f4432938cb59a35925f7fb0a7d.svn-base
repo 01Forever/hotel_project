@@ -1,0 +1,284 @@
+package xyz.for01.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import xyz.for01.conn.Conn;
+import xyz.for01.hotelvo.HotelImgVo;
+import xyz.for01.hotelvo.HotelReviewVo;
+import xyz.for01.hotelvo.HotelVo;
+import xyz.for01.hotelvo.ReviewImgVo;
+import xyz.for01.hotelvo.RoomImgVo;
+import xyz.for01.hotelvo.RoomVo;
+
+public class HotelDAO {
+	private HotelDAO() {}
+	
+	private static HotelDAO instance = new HotelDAO();
+	
+	public static HotelDAO getInstance() {
+		return instance;
+	}
+	
+	/*// 일반 회원 화면에서의 호텔 리스트 출력
+	public List<HotelVo> selectHotelList() {
+		String sql = "SELECT HOTELNO, HOTELGRADE, HOTELNAME, ADDRESS, WTMX, WTMY FROM HOTEL";
+		List<HotelVo> list = new ArrayList<HotelVo>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				HotelVo hVo = new HotelVo();
+				hVo.setHotelNo(rs.getInt("hotelno"));
+				// hVo.setHotelGrade(rs.getString("hotelgrade"));
+				hVo.setHotelName(rs.getString("hotelname"));
+				hVo.setAddress(rs.getString("address"));
+				// hVo.setWtmX(rs.getDouble("wtmx"));
+				// hVo.setWtmY(rs.getDouble("wtmy"));
+				list.add(hVo);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			Conn.close(conn, pstmt, rs);
+			
+		}
+		return list;
+	}*/
+	
+	// 호텔 상세 보기를 위한 메소드
+	public HotelVo hotelDetail(int hotelNo) {
+		String sql = "SELECT T.HOTELNO, T.HOTELNAME, T.ADDRESS, T.WTMX, T.WTMY, NVL(A.STAR,0) STAR, A.TOT " 
+				+ "FROM HOTEL T JOIN " 
+				+ "(SELECT AVG(B.STAR) STAR , COUNT(B.STAR) TOT , R.HOTELNO HOTELNO " 
+				+ "FROM ROOM R LEFT OUTER JOIN REVIEW_BOARD B ON R.ROOMNO = B.ROOMNO " 
+				+ "GROUP BY R.HOTELNO) A ON A.HOTELNO = T.HOTELNO "
+				+ "WHERE T.HOTELNO = ?";
+		
+		HotelVo hVo = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hotelNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				hVo = new HotelVo(rs.getInt("hotelno"), 
+						rs.getString("hotelname"), rs.getString("address"), rs.getInt("star"), rs.getInt("tot"), rs.getString("wtmx"), rs.getString("wtmy"), selectHotelImgs(hotelNo), selectRoomList(hotelNo), selectReview(hotelNo));
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Conn.close(conn, pstmt, rs);
+		}
+		return hVo;
+	}
+	
+	// 호텔 이미지 불러오기 위한 메소드
+	private List<HotelImgVo> selectHotelImgs(int hotelNo) {
+		String sql = "SELECT IMAGE, ORIGIN_IMAGE FROM HOTEL_IMAGE WHERE HOTELNO = ?";
+		List<HotelImgVo> imgList = new ArrayList<HotelImgVo>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hotelNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				HotelImgVo hVo = new HotelImgVo(rs.getString("image"), rs.getString("origin_image"));
+				imgList.add(hVo);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Conn.close(conn, pstmt, rs);
+		}
+		
+		return imgList;
+	}
+	
+	
+	// 해당 호텔 방 리스트를 불러오기 위한 메소드
+	private List<RoomVo> selectRoomList(int hotelNo) {
+		String sql = "SELECT R.ROOMNO, R.ROOMNAME, R.PRICE, R.CONTENT FROM HOTEL H JOIN ROOM R ON H.HOTELNO = R.HOTELNO WHERE H.HOTELNO = ?";
+		List<RoomVo> rVoList = new ArrayList<RoomVo>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hotelNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				RoomVo rVo = 
+						new RoomVo(rs.getInt("roomno"), rs.getString("roomname"), rs.getString("price"), rs.getString("content"), selectRoomImgs(rs.getInt("roomno")));
+				rVoList.add(rVo);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Conn.close(conn, pstmt, rs);
+		}
+		return rVoList;
+	}
+	
+	// 해당 방의 이미지를 불러오기 위한 메소드
+	private List<RoomImgVo> selectRoomImgs(int roomNo) {
+		String sql = "SELECT IMAGE, ORIGIN_IMAGE FROM ROOM_IMAGE WHERE ROOMNO = ?";
+		List<RoomImgVo> imgList = new ArrayList<RoomImgVo>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, roomNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				RoomImgVo rVo = new RoomImgVo(rs.getString("image"), rs.getString("origin_image"));
+				imgList.add(rVo);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Conn.close(conn, pstmt, rs);
+		}
+		
+		return imgList;
+	}
+	
+	// 메인 페이지 검색 메소드
+	public HotelVo searchHotelList(String borugh) {
+		HotelVo hVo = null;
+		String sql = "SELECT A.hotelno, A.hotelname, MIN(B.price) price, A.borugh, C.res_start, C.res_end " + 
+					 "FROM hotel A " + 
+					 "JOIN room B ON A.hotelno = B.hotelno " + 
+					 "LEFT JOIN reservation C ON A.hotelno = C.hotelno " + 
+					 "WHERE borugh = ? " + 
+					 "GROUP BY A.hotelno, A.hotelname, A.borugh, C.res_start, C.res_end " + 
+					 "ORDER BY hotelno";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		  
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, borugh);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				hVo = new HotelVo();
+				hVo.setHotelNo(rs.getInt("hotelNo"));
+				hVo.setHotelName(rs.getString("hotelName"));
+				hVo.setPrice(rs.getString("price"));
+				hVo.setBorugh(rs.getString("borugh"));
+				hVo.setRes_Start(rs.getDate("res_Start"));
+				hVo.setRes_End(rs.getDate("res_End"));
+			}
+		     
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Conn.close(conn, pstmt, rs);
+		}
+		return hVo;
+	}
+	
+	// 해당 호텔의 리뷰를 불러오기 위한 메소드
+	private List<HotelReviewVo> selectReview(int hotelNo){
+		String sql = "SELECT B.BOARDNO, R.ROOMNAME, B.TITLE, B.CONTENT, (SELECT NIC FROM MEMBER M WHERE M.USERNO = B.USERNO) NIC,"
+				+ " B.STAR, B.WRITEDATE "
+				+ "FROM ROOM R JOIN REVIEW_BOARD B ON R.ROOMNO = B.ROOMNO "
+				+ "WHERE R.HOTELNO = ?";
+		List<HotelReviewVo> reviewList = new ArrayList<HotelReviewVo>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hotelNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				HotelReviewVo rVo = new HotelReviewVo(rs.getInt("boardno"), rs.getString("title"), rs.getString("content"), 
+						rs.getString("roomname"), rs.getString("nic"), rs.getInt("star"), rs.getDate("writedate"), selectReviewImgs(rs.getInt("boardno")));
+				reviewList.add(rVo);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return reviewList;
+	}
+	
+	// 리뷰 이미지를 불러오기 위한 메소드
+	private List<ReviewImgVo> selectReviewImgs(int boardNo) {
+		String sql = "SELECT IMAGE, ORIGINE_IMAGE FROM REVIEW_IMAGE WHERE BOARDNO = ?";
+		List<ReviewImgVo> imgsList = new ArrayList<ReviewImgVo>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = Conn.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				ReviewImgVo rVo = new ReviewImgVo(rs.getString("image"), rs.getString("origine_image"));
+				imgsList.add(rVo);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Conn.close(conn, pstmt, rs);
+		}
+		
+		return imgsList;
+	}
+	
+	
+}

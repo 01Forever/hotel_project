@@ -1,0 +1,182 @@
+@charset "UTF-8";
+/*
+	header {
+		background: url("images/header.jpg");
+		background-size: contain;
+		position: relative;
+		height: 650px;      
+	}
+*/
+	
+	#search {
+		background: url("../images/header.jpg");
+		background-size: contain;
+		position: relative;
+		padding: 10% 0;
+		margin: 0 auto;
+		max-height: 450px;
+	}
+	
+	#search_button{
+		border: none;
+		color: white;
+		padding: 5px 10px 5px 10px;
+		text-align: center;
+	 	text-decoration: none;
+		cursor: pointer;
+		background: #ff5146;
+	    background: -webkit-gradient(linear,left top,right bottom,
+					color-stop(0,#ff5146),
+					color-stop(100%,#ff2d7b));
+		padding:20px;
+	}
+		
+	select {
+		width: 70px;
+	    height: 30px;
+	    font-size: 15px;
+	    color: #ff5146;
+	    border: 1px solid #ff5146;
+	    border-radius: 3px;
+	    -webkit-appearance: none; 
+	    -moz-appearance: none;    
+	    appearance: none;
+	}
+	
+	select::-ms-expand {
+	    display: none;            
+	}
+	
+	select option:checked, select option:hover {
+	    background: #ff00ff; 
+	    color: #fff;
+	}
+	
+	select option:checked, select option:hover { 
+	    box-shadow: 0 0 10px 100px #ff00ff inset;  
+	    color: #fff;
+	}
+	
+	table {	
+		background-color: #eee;
+		margin: 0 auto;
+	}
+	
+	table td {
+		padding: 40px 50px;
+	}
+	
+	h2 {
+		padding: 30px 40px;
+	}
+	
+	input[type = 'text'] {
+		width: 100px;
+	    height: 30px;
+	    font-size: 15px;
+	    border: 1px solid #ff5146;
+	    border-radius: 3px;
+	    -webkit-appearance: none; 
+	    -moz-appearance: none;    
+	    appearance: none;
+	}
+	
+	input::placeholder {
+		text-align: center;
+		color: #f8585b;
+	}
+	
+	#content {
+		background-color: #eee;
+		position: relative;
+		width: 70%;
+		margin: 0 auto;
+	}
+	
+	#close {
+		padding: 80px;
+	}
+	
+	#sliderBox {
+		width: 93%;
+		margin: 0 auto;
+	}
+	
+	#closeSlider {
+		width: 50%;
+	}
+	
+	#closeSlider > ul li {
+		display: inline;
+	}
+	
+	#hotelImg {
+		width: 30%;
+		padding-left: 60px;
+		float: left;
+	}
+	
+	#distance > li {
+		padding: 10px 80px 0 0;
+		float: right;
+	}
+	
+	#hotelInfo {
+		padding-left: 420px;
+	}
+	
+	#hotelInfo > li {
+		padding: 15px 0;
+	}
+	
+	#hotelInfo > li img {
+		padding-right: 20px;
+		float: left;
+	}
+	
+	#position {
+		text-align: center;
+		position: relative;
+		top: -50px;
+	}
+	
+	#recommend {
+		height: 390px;
+		padding: 80px;
+	}
+
+	#recommend div {
+		position: relative;
+		width: 26%;
+		padding: 0 42px; 
+		float: left;
+	}
+	
+	#recommend div img {
+		width: 100%; 
+		-webkit-filter: grayscale(0) blur(0);
+		filter: grayscale(0) blur(0);
+		-webkit-transition: .3s ease-in-out;
+		transition: .3s ease-in-out;
+	}
+	
+	#recommend div:hover img {
+		-webkit-filter: grayscale(100%) blur(3px);
+		filter: grayscale(100%) blur(3px);
+	}
+	
+	#recommend div span {
+		position: absolute;
+		top: 40px;
+		display: none;
+		font-size: 18px;
+	}
+	
+	#recommend div:hover span {
+		display: block;
+	}
+	
+	#event {
+		height: 300px;
+		padding: 80px;
+	}

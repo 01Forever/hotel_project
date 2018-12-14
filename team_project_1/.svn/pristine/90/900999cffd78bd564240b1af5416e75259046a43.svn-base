@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+#container{
+  	width:1400px;
+  	padding:150px 0 0 0;
+  	margin:0 auto;
+}
+  
+#content{
+  	height:800px;
+  	padding:20px;
+}
+.menu{
+  	width: 1236px;
+  	height:100px;
+  	margin:0 auto;
+}
+.calendar{
+  	float:left;
+  	width:380px;
+  	height:100px;
+  	background-color: #404040;
+}
+.check-tab{
+  	margin-bottom:15px;
+  	color:#fff;
+}
+  	
+#check-in{
+	margin-left:50px;
+}
+#check-out{
+	float:right;
+	margin-right:50px;
+}
+  	
+.calendar-head{
+	border: 0 none;
+	background: none;
+}
+.menu .calendar-head .start input{
+	border:0;
+	width:0;
+	cursor: pointer;
+}
+.start{
+	display:inline-block;
+	width:160px;
+	font-size:28px;
+}
+.menu .calendar-head .last input{
+	border:0;
+	width:0;
+	cursor: pointer;
+}
+
+.last{
+	display:inline-block;
+	width:160px;
+	font-size:28px;
+	float:right;
+}
+.category{
+	background:darkblue;
+	float:right;
+	width:845px;
+	height:100px;
+	
+}
+.category-tab{
+	margin-top:40px;
+}
+.category ul{
+	margin-left:38px;
+}
+.category ul li{
+	font-size:20px;
+	display:inline;
+	padding:0 10px;
+}
+.category ul li a{
+	color:#ccf;
+	text-decoration:none
+}
+.menu-bottom{
+	margin-top:25px;
+}
+.main{
+	padding:20px;
+	height:500px;
+}
+.box{
+	display:inline-block;
+	float:left;
+	margin-top:15px;
+	margin-left:22px;
+	height:200px;
+	width:622px;
+	border:1px solid #ccc;
+}
+.image-box{
+	display:inline-block;
+	height:200px;
+	width:350px;
+}
+.infor{
+	display:inline-block;
+	height:200px;
+	width:255px;
+	position: absolute;
+	margin-left: 13px;
+}
+.search-title{
+	font-size:27px;
+	font-weight:400;
+}
+.price-rab{
+	height:115px;
+}
+.price-item{
+	margin-top:17px;
+}
+.price-rab .price-item i b{
+	font-weight: 600;
+}
+.price-rab .price-item i small{
+ 		font-size: 14px;
+   color: #888;
+  
+}
+.price-type{
+	min-width: 120px;
+	display:inline-block;
+}
+.price-reserve{
+	background-color: #ff2d60;
+	color:#fff;
+	font-size: 12px;
+	padding: 1px 4px 2px;
+}
+.price-part{
+	font-size:22px;
+	vertical-align: text-top
+}
+.price-rab .price-type .won {
+	font-size:3px;
+}
+.won{
+	font-size:14px;
+}

@@ -1,0 +1,34 @@
+package xyz.for01.controller.board;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import xyz.for01.boardvo.Paging;
+
+public class BoardAction implements Action{
+
+	@Override
+	public void execute(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		BoardDAO bDao = new BoardDAO();
+	    ArrayList <span style="font-family: "맑은 고딕", sans-serif;">list;</span></p><boarddto>   
+	    int totalCount = dao.getTotalCount();
+	    int page = req.getParameter("page") == null ? 1 : Integer.parseInt(req.getParameter("page"));
+	     
+	    Paging paging = new Paging();
+	    paging.setPageNo(page); //get방식의 parameter값으로 반은 page변수, 현재 페이지 번호
+	    paging.setPageSize(10); // 한페이지에 불러낼 게시물의 개수 지정
+	    paging.setTotalCount(totalCount);
+	     
+	    page = (page - 1) * 10; //select해오는 기준을 구한다.
+	     
+	    list = bDao.getList(page, paging.getPageSize());
+	     
+	    req.setAttribute("list", list);
+	    req.setAttribute("paging", paging);
+	  }
+	}
+
+

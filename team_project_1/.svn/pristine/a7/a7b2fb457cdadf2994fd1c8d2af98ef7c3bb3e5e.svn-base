@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+body {}
+	.container { width: 100% ;}
+	header {width: 100%;position: fixed; z-index: 10000; background: #0000004d;}
+		div#header {width: 100%; margin: 0 auto; max-width: 1200px;}
+		div#header h1 {float:left; width: 150px;}
+		button.m_menu_btn {display: none}
+		div#header nav {float: right; width:calc(100% - 150px); text-align: right;}
+		div#header nav:after {content: ''; width: 0px; height: 0px;  clear: both;}
+		div#header nav ul#other {display: inline-block;}
+		div#header nav ul#other > li {display: inline-block; position: relative;}
+		div#header nav ul#other > li > a {display: block; text-decoration: none;color: #fff;font-size: 15px;font-weight: 500;}
+		div#header nav ul#other > li:last-child a {padding-right: 0px;}
+			ul.sub_menu {display: none; position: absolute; width: 170px; border-radius: 20px; left: -30px; background: #ccc; }
+			ul.sub_menu li {}
+			ul.sub_menu li a {display: block;color: #000; font-size: 14px; text-align:center; font-weight: 500 ; text-decoration: none}		
+/* 화면 해상도 width 960px 이상 Design --------------------------------------*/
+@media screen and (min-width: 960px){
+		div#header nav ul#other > li > a { padding: 20px 25px;}
+		div#header nav ul#other > li:last-child a {}
+			div#header nav ul#other > li:hover {}  
+			ul.sub_menu {padding-top: 15px; padding-bottom: 15px;}
+			ul.sub_menu li {}
+			ul.sub_menu li a {padding: 10px 5px;}	
+}
+
+/* 화면 해상도 width 641px 이상 1024px 이하 Design --------------------------------------*/
+@media screen and (max-width: 1024px) and (min-width: 601px) {
+		div#header nav ul#other > li > a {padding: 25px 10px; font-size: 14px}
+		div#header nav ul#other > li:last-child a {padding-right: 10px}
+			div#header nav ul#other > li:hover {}  
+			ul.sub_menu {padding-top: 10px; padding-bottom: 10px;}
+			ul.sub_menu li {}
+			ul.sub_menu li a {padding: 10px 5px;}	
+}
+
+/* 화면 해상도 width 300px 이상  Design --------------------------------------*/
+@media screen and (max-width: 600px){
+	header {}
+		div#header {width: 100%;}
+		div#header h1 {float:left; width: 150px;}
+		button.m_menu_btn {display: block; float: right}
+		div#header nav {float: none; overflow: hidden; width:100%; text-align: left;}
+		div#header nav ul#other {display: none;}
+		div#header nav ul#other.on {display: block;}
+		div#header nav ul#other > li {display: block; position: relative; background: #ccc;}
+}
+

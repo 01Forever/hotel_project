@@ -1,0 +1,97 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="./js/payMoment.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("form").submit(payCheck);
+});
+</script>
+</head>
+<body>
+	
+<c:choose>
+	<c:when test="${sessionScope.loginUser == null}">
+		<p><span style="color: red;">비회원</span>이네여 졔샮댜</p>
+	</c:when>
+	<c:otherwise>
+		<p><span style="color: red;">구현 아직 니니</span></p>
+	</c:otherwise>
+</c:choose>
+
+<c:choose>
+	<c:when test="${joinmessage != null}">
+		<h2 style="color: blue;">${joinmessage}</h2>
+	</c:when>
+	<c:when test="${message != null}">
+		<h2 style="color: blue;">${message}</h2>
+	</c:when>
+	<c:otherwise>
+		<h2 style="color: blue;">메세지 없어~~~!!!!!!!!!!!!!</h2>
+	</c:otherwise>
+</c:choose>
+
+<h2>암껏두 없찌렁</h2>
+
+Star!!!!! ====> <p style="color:red;">${start}</p>
+End!!!!! ====> <p style="color:red;">${end}</p>
+
+<div>
+	<ul>
+		<li>호텔 번호 :  ${roomInfo.hotelNo}</li>
+		<li>호텔 이름 :  ${roomInfo.hotelName}</li>
+		<li>방 번호   :  ${roomInfo.roomNo}</li>
+		<li>방 이름   :  ${roomInfo.roomName}</li>
+		<li>방 가격   :  ${roomInfo.price}</li>
+	</ul>
+</div>
+<div>
+	<form action="resPage" method="post" name="payFor">
+		<input type="hidden" name="res_Start" value="${start}"> 
+		<input type="hidden" name="res_End" value="${end}"> 
+		<input type="hidden" name="hotelNo" value="${roomInfo.hotelNo}"> 
+		<input type="hidden" name="roomNo" value="${roomInfo.roomNo}"> 
+		<input type="hidden" name="price" value="${roomInfo.price}">
+		<c:choose>
+			<c:when test="${loginUser == null}">
+				<input type="hidden" name="grade" value="0">
+			</c:when>
+			<c:otherwise>
+				<input type="hidden" name="grade" value="${loginUser.grade}">
+			</c:otherwise>
+		</c:choose>
+
+		<ul>
+			<li><label for="name">예약자명</label>
+				<input type="text" id="userName" name="userName" title="Name" placeholder="예약자명을 입력하세요" maxlength="10">
+			</li>
+		</ul>
+		<ul>
+			<li><label for="phone">휴대전화</label>
+				<input type="text" id="phone" name="phone" title="Phone" placeholder="휴대전화 번호를 입력하세요" value="${loginUser.phone}">
+			</li>
+		</ul>
+		<%-- <ul>
+			<li><label for="email">이메일</label>
+				<input type="text" id="email" name="email" title="Email" placeholder="이메일을 입력하세요" value="${loginUser.emailid}">
+			</li>
+		</ul> --%>
+		<ul>
+			<li>결제수단<br>
+				<label><input type="radio" id="noBankBook" name="pay" title="무통장입금" value="noBankBook">무통장 입금</label>
+				<label><input type="radio" id="card" name="pay" title="카드 결제" value="card">카드 결제</label>
+			</li>
+		</ul>
+		<ul class="button">
+			<li><input type="submit" title="PayFor" value="결제하기"></li>
+		</ul>
+	</form>
+</div>
+</body>
+</html>

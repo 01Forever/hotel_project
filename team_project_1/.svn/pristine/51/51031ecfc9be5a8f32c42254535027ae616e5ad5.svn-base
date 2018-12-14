@@ -1,0 +1,96 @@
+package xyz.for01.hotelvo;
+
+import java.sql.Date;
+import java.util.List;
+
+public class HotelReviewVo {
+	private int boardNo;
+	private String title;
+	private String content;
+	private String roomName;
+	private String nic;
+	private int star;
+	private Date writeDate;
+	
+	private List<ReviewImgVo> reviewImgs;
+	
+	public HotelReviewVo() { }
+
+	public HotelReviewVo(int boardNo, String title, String content, String roomName, String nic, int star,
+			Date writeDate, List<ReviewImgVo> reviewImgs) {
+		this.boardNo = boardNo;
+		this.title = title;
+		this.content = content;
+		this.roomName = roomName;
+		this.nic = nic;
+		this.star = star;
+		this.writeDate = writeDate;
+		this.reviewImgs = reviewImgs;
+	}
+	
+	
+	public int getBoardNo() {
+		return boardNo;
+	}
+
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getRoomName() {
+		return roomName;
+	}
+
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+
+	public String getUserNo() {
+		return nic;
+	}
+
+	public void setUserNo(String nic) {
+		this.nic = nic;
+	}
+
+	public int getStar() {
+		return star;
+	}
+
+	public void setStar(int star) {
+		this.star = star;
+	}
+
+	public Date getWriteDate() {
+		return writeDate;
+	}
+
+	public void setWriteDate(Date writeDate) {
+		this.writeDate = writeDate;
+	}
+
+	public List<ReviewImgVo> getReviewImgs() {
+		return reviewImgs;
+	}
+
+	public void setReviewImgs(List<ReviewImgVo> reviewImgs) {
+		this.reviewImgs = reviewImgs;
+	}
+	
+}

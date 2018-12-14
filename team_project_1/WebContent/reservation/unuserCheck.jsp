@@ -1,0 +1,122 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<jsp:include page="../comm/head.jsp"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>예약 내역</title>
+<style>
+	.content_box{
+		padding: 100px 100px 100px 170px;
+		width:600px;
+		margin:0 auto;
+		line-height: 2;
+	}
+	.unuser_info h2{
+		font-size:20px;
+		font-weight:600;
+	}
+	.unuser_info a{
+		text-decoration:none;
+	}
+	.input-box{
+		padding: 20px 0 0 0;
+	}
+	.lookup{
+		padding: 20px 0 0 0;
+	}
+	.lookup input{
+	    
+		color:white;
+		cursor:pointer;
+		padding:8px;
+		border:none;
+		background:red; 
+	}
+	#user_name{
+		padding: 0px 22px 0 0;
+	}
+	.input-text input{
+		border: none;
+   		border-bottom: 1px solid #ccc;
+	}
+</style>
+</head>
+<body>
+<div class="container">
+	<jsp:include page="/comm/header.jsp"/>
+	<div class="content">
+		<div class="content_box">
+			<div class="unuser_info">
+				<h2>비회원 예약 조회</h2>
+				<a href="login">혹시, 회원으로 예약하셨나요?</a>
+				<p>예약 내역 확인은 로그인 후 이용 가능합니다.</p>
+				<p>비회원은 예약 시 예약자 성명과 휴대폰 번호 혹은 예약번호로 조회가 가능합니다.</p>
+			</div>
+				
+			<div class="input-box">
+				<form action="reResCheckPage" method="post" name="resCheckPage" id="resCheckPage">
+					<div class="input-text">
+						<label for="userName" id="user_name">예약자명</label>
+						<input type="text" id="userName" name="userName" title="Name" placeholder="예약자명" maxlength="10">
+					</div>
+					<div class="input-text">
+						<label for="phone">휴대폰 번호</label>
+						<input type="text" id="phone" name="phone" title="Phone" placeholder="휴대폰 번호" maxlength="11">
+					</div>
+					<div>${message}</div>
+				</form>
+			</div>
+			
+			<div class="lookup">
+				<input type="button" value="비회원 예약 조회" onclick="myFunction()">
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+
+function myFunction() {
+	
+	function nameCheck(str){
+		return (/^[가-힣]{2,4}$/).test(str);
+	}
+	
+  function phoneCheck(str){
+		return (/^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/).test(str);
+	}
+  
+	$('#userName').val($('#userName').val().trim()); 
+		if($('#userName').val().length == 0) {
+		  alert("이름을 입력해주세요.");
+	      $('#userName').focus();
+	      return false;
+	  }
+	
+	  if(!nameCheck($('#userName').val()))
+	  {
+	   alert('이름을 확인하세요.(한글 2~4자 이내)');
+	   $('#userName').focus();
+	   return false;
+	  }
+	  
+	  if($('#phone').val().length == 0) {
+		  alert("휴대폰 번호를 입력해주세요.");
+	      $('#phone').focus();
+	      return false;
+	  }
+	  
+	  if (!phoneCheck($('#phone').val())) {
+	      alert("잘못된 휴대폰 번호입니다.");
+	      $('#phone').focus();
+	      return false;
+		}
+	  
+	  $("#resCheckPage").submit();
+}
+
+</script>
+	<jsp:include page="../comm/footer.jsp"/>
+</div>
+</body>
+</html>
